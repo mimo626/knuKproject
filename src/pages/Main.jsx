@@ -11,11 +11,11 @@ const Content = styled.div`
     background-color: #6B6B6B;
 `;
 
-const Promotion = styled.div`
+const Promotion = styled.img`
     width: 100%;
     height: 720px;
-    color: white;
-    background-color: #282945;
+    display: block;
+    object-fit: cover;
 `;
 
 
@@ -24,9 +24,7 @@ function Main() {
         <Container>
             <Header />
             <Content>
-                <Promotion>
-                    video
-                </Promotion>
+                <Promotion src="img/knu_view.webp" />
                 <Tab left={'단과대별'} right={'분야별'}/>
                 <div>
                     Hot Program
