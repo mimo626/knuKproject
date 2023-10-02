@@ -8,7 +8,7 @@ const Container = styled.div`
 
 const Content = styled.div`
     width: 100%;
-    background-color: #6B6B6B;
+    background-color: #006CBF;
 `;
 
 const Promotion = styled.img`
