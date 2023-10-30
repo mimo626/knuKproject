@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 100%;
     height: 800px;
-    background-color: #D6F0EA;
+    background-color: #E9F9FA;
 `;
 
 const MenuWrapper = styled.div`

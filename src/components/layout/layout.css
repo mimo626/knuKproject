@@ -1,6 +1,7 @@
 .layout {
     height: 4420px;
     width: 1440px;
+    overflow: auto;
 }
 .main {
     width:1180px;
