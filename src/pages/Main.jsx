@@ -8,8 +8,7 @@ const Container = styled.div`
 `;
 
 const Page = styled.div`
-    width: 63.8125rem;
-    height: 35.5625rem;
+]   height: 35.5625rem;
     flex-shrink: 0;
     display: flex;
     margin: 130px 425px 0px 425px;
@@ -44,9 +43,6 @@ const Text = styled.div`
     font-style: italic; 
     font-weight: 600; 
 `;
-const Content = styled.div`
-    background-color: #006CBF;
-`;
 
 const Promotion = styled.img`
     width: 672px;
@@ -54,6 +50,11 @@ const Promotion = styled.img`
     border-radius: 4.8125rem; 
     margin: 82px 2000px 36px 130px;
 `;
+
+const Content = styled.div`
+    background-color: #006CBF;
+`;
+
 
 
 function Main() {
@@ -74,7 +75,6 @@ function Main() {
                 <Promotion src="img/knu_view.webp" />
             </Page>
             <Content>
-                
                 <Tab left={'단과대별'} right={'분야별'}/>
                 <div>
                     Hot Program
