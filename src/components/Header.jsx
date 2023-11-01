@@ -10,7 +10,6 @@ const Container = styled.div`
     margin-left: 24px;
     margin-right: 24px;
     flex-shrink: 0;
-    position: fixed;
     overflow: hidden;
 `;
 
@@ -18,7 +17,7 @@ const Image = styled.img`
     width: 2.75rem;
     height: 2.75rem;
     align-items: center;
-    paddig: 11px 80px 11px 36px;
+    padding: 11px 80px 11px 36px;
 `;
 const Nav = styled.div`
     display: flex;

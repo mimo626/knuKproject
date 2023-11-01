@@ -3,13 +3,8 @@ import Tab from "../components/Tab";
 import Header from "../components/Header";
 
 const Container = styled.div`
-    display: flex;
-    width: 100%;    
-    margin-left: 15px;
-    margin-right: 15px;
+    width: 100%;
     background-color: #E9F9FA;
-    overflow:auto;
-    border: 3px solid #FF1493;
 `;
 
 const Page = styled.div`
@@ -58,7 +53,6 @@ const Promotion = styled.img`
     height: 465px;
     border-radius: 4.8125rem; 
     margin: 82px 2000px 36px 130px;
-   
 `;
 
 
