@@ -1,11 +1,5 @@
 import styled from "styled-components";
 import knuLogo from './knuLogo.png'
-const Line = styled.div`
-    width:100%;
-    stroke-width: 1px;
-    stroke: var(--knu, #006CBF);
-    magrin-top:3.8rem;
-`;
 
 const Container = styled.div`
     display: flex;
@@ -46,7 +40,6 @@ const HeaderWrapperList = styled.div`
     margin-right: 2.5rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-
 `;
 const HeaderLine = styled.div`
     width: 76.875rem;
@@ -58,7 +51,6 @@ const HeaderLine = styled.div`
 function Header() {
     return (
         <Container>
-            <Line></Line>
             <Image src={knuLogo} alt='강남대 로고'></Image>
             <HeaderWrapper>
                 <HeaderWrapperList>소개</HeaderWrapperList>
