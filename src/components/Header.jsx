@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import knuLogo from './knuLogo.png'
+import knuLogo from './knuLogo.png';
 
 const Container = styled.div`
     display: flex;
@@ -8,8 +8,11 @@ const Container = styled.div`
     color:006CBF;
     width:100%;
     height: 4.125rem;
+    position: fixed;
+    top: 0;
     flex-shrink: 0;
     overflow: hidden;
+    border-bottom: 1px solid #006CBF;
 
 `;
 
