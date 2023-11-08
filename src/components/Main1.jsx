@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import SignupBtn from "../components/SignupBtn";
-import LoginBtn from "../components/LoginBtn";
 
 const Page = styled.div`
     height: 35.5625rem;
@@ -9,7 +7,7 @@ const Page = styled.div`
 
 `;
 const Content = styled.div`
-    width:63.5rem;
+    width:75.5rem;
     height: 35.5625rem;
     flex-shrink: 0;
     display: flex;
@@ -20,16 +18,15 @@ const Content = styled.div`
 const Main1Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width:23.5rem;
+    width:25.5rem;
     margin-top: 10rem;
     flex-shrink: 0;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
 `;
 const Circle = styled.div`
     background-color: #006CBF;
-    width: 16rem;
-    height: 16rem;
+    width: 20rem;
+    height: 20rem;
     flex-shrink: 0;
     border-radius: 18.75rem;
 `;
@@ -47,9 +44,9 @@ const KNUText1 = styled.div`
 const Text = styled.div`
     color: #54A9EA;
     font-family: Oleo Script;
-    font-size: 2.25rem;    
+    font-size: 2.5rem;    
     font-style: italic; 
-    font-weight: 600; 
+    font-weight: 800; 
     margin-top: 1rem;
 `;
 const MainBtnWrapper = styled.div`
@@ -61,13 +58,12 @@ const MainBtnWrapper = styled.div`
     margin: 0 auto;
 `;
 const Promotion = styled.img`
-    width: 40rem;
-    height: 29rem;
+    width: 50rem;
+    height: 35rem;
     border-radius: 4.8125rem; 
-    margin-top:14.9rem;
+    margin-top:9rem;
     margin-bottom:1.6rem;
     margin: 0 auto;
-    margin-top:4rem;
 
 `;
 
@@ -87,8 +83,6 @@ function Main1() {
                         KNU students
                     </Text>
                     <MainBtnWrapper>
-                        <SignupBtn/>
-                        <LoginBtn/>
                     </MainBtnWrapper>
                 </Main1Wrapper>
                 <Promotion src="img/knu_view.webp" />

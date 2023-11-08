@@ -39,31 +39,45 @@ const Content = styled.div`
 
 `;
 const Map = styled.img`
-    width: 50.25rem;
-    height: 35.375rem;
+    width: 62.5rem;
+    height: 43.99875rem;
     flex-shrink: 0;
     margin: 0 auto;
     margin-top:2.6rem;
 `;
 
+const Circle2 = styled.div`
+    background-color: #B3E1B7;
+    border-radius: 5rem;
+    width: 3.3rem;
+    height: 3.3rem;
+    margin: 0 auto;
+    margin-top: 5.1rem;
 
-function Main() {
+`;
+
+const Line2 = styled.div`
+    width: 0.2rem;
+    height: 9.4375rem;
+    background-color: #B3E1B7;
+    flex-shrink: 0;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+`;
+
+function MainCategory() {
     return (
         <Page>
             <Line></Line>
             <Circle></Circle>
             <Content>
                 <Map src={knuMap} alt='강남대 지도'></Map>
+                <Circle2></Circle2>
+                <Line2></Line2>
                 <Tab left={'단과대별'} right={'분야별'}/>
-                <div>
-                    Hot Program
-                </div>
-                <div>
-                    Footer
-                </div>
             </Content>
         </Page>
     );
 }
 
-export default Main;
+export default MainCategory;

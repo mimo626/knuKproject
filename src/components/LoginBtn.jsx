@@ -2,30 +2,40 @@ import styled from "styled-components";
 
 const Container = styled.div`
     display: flex;
-    width: 5.375rem;
-    height: 2.125rem;
-    padding: 0.5rem 1.5rem;
+    width: 4rem;
+    height: 2rem;
+    padding: 0.2rem 1rem;
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
     flex-shrink: 0;
-    border: 2px solid #54A9EA;
+    border: 2px solid #006CBF;
     border-radius: 18.75rem;
-    margin-left: 4rem;
+    &:hover {
+        font-size: 1rem;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
 `;
 const LoginText = styled.div`
-    color: #54A9EA; 
+    color: #006CBF; 
     text-align: center;
     font-family: Inter;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
     line-height: 100%;
+    &:hover {
+        font-size: 1rem;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
 `;
 function LoginBtn() {
 
     return (
         <Container>
-            <LoginText>Log in</LoginText>
+            <LoginText><a>Log in</a></LoginText>
         </Container>
     );
 }

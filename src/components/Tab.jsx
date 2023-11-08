@@ -3,23 +3,31 @@ import styled from "styled-components";
 
 const Container = styled.div`
     width: 100%;
-    height: 800px;
     background-color: #E9F9FA;
 `;
 
 const MenuWrapper = styled.div`
-    width: 100%;
+    width: 37.5rem;
     display: flex;
     justify-content: space-around;
+    margin: 0 auto;
+    margin-top:4.5rem;
 `;
 
 const Menu = styled.div`
     width: 50%;
-    padding: 30px;
     text-align: center;
-    background-color: #D6F0EA;
+    padding: 1.25rem 1rem;
+    border: 3px solid #B3E1B7;
+    background: #FFF;
+    color: #B3E1B7;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 1000;
+    line-height: 100%;
     &:hover {
-        background-color: #A7BEB8;
+        background: #B3E1B7;
+        color: #FFF;
         transition: all 0.3s;
         cursor: pointer;
     }
@@ -30,15 +38,15 @@ function Tab(props) {
 
     return (
         <Container>
-            <MenuWrapper>
-                <Menu onClick={() => setTab(true)}>{props.left}</Menu>
-                <Menu onClick={() => setTab(false)}>{props.right}</Menu>
-            </MenuWrapper>
             <div>
                 {
                     tab ? props.left : props.right
                 }
             </div>
+            <MenuWrapper>
+                <Menu onClick={() => setTab(true)}>{props.left}</Menu>
+                <Menu onClick={() => setTab(false)}>{props.right}</Menu>
+            </MenuWrapper>
         </Container>
     );
 }

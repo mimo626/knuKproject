@@ -10,7 +10,6 @@ const Page = styled.div`
 const Content = styled.div`
     display: flex;
     flex-direction: row;
-    width: 75.25rem;
     height: 22.4375rem;
     flex-shrink: 0;
     border-radius: 6.25rem;
@@ -19,6 +18,7 @@ const Content = styled.div`
     margin: 0 auto;
     box-shadow: 5px 2px 8px 1px #D3D3D3;
     justify-content : center;
+    width: 75rem;
 `;
 
 
@@ -51,7 +51,7 @@ const SearchBtn = styled.div`
 `;
 
 
-function Main() {
+function MainSearch() {
     return (
         <Page>
             <Content>
@@ -62,4 +62,4 @@ function Main() {
     );
 }
 
-export default Main;
+export default MainSearch;
