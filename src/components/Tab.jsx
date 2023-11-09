@@ -34,18 +34,11 @@ const Menu = styled.div`
 `;
 
 function Tab(props) {
-    const [tab, setTab] = useState(true)
-
     return (
         <Container>
-            <div>
-                {
-                    tab ? props.left : props.right
-                }
-            </div>
             <MenuWrapper>
-                <Menu onClick={() => setTab(true)}>{props.left}</Menu>
-                <Menu onClick={() => setTab(false)}>{props.right}</Menu>
+                <Menu onClick={() => props.switch(true)}>{props.left}</Menu>
+                <Menu onClick={() => props.switch(false)}>{props.right}</Menu>
             </MenuWrapper>
         </Container>
     );

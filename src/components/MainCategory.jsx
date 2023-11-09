@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Tab from "../components/Tab";
 import knuMap from './knuMap.png';
+import { useState } from "react";
 
 
 
@@ -66,15 +67,21 @@ const Line2 = styled.div`
 `;
 
 function MainCategory() {
+    const [tab, setTab] = useState(true)
+
     return (
         <Page>
             <Line></Line>
             <Circle></Circle>
             <Content>
-                <Map src={knuMap} alt='강남대 지도'></Map>
+                {
+                    tab 
+                    ? <Map src={knuMap} alt='강남대 지도' /> 
+                    : <div></div>
+                }
                 <Circle2></Circle2>
                 <Line2></Line2>
-                <Tab left={'단과대별'} right={'분야별'}/>
+                <Tab left={'단과대별'} right={'분야별'} switch={setTab}/>
             </Content>
         </Page>
     );
