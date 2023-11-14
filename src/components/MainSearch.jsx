@@ -4,12 +4,12 @@ import { useState } from "react";
 
 const Page = styled.div`
     width: 100%;
-    background-color: #E9F9FA;
+    background-color: #FFF;
     margin-top: 12rem;
 
 `;
 const SearchWrapper = styled.div`
-    width:65.75rem;
+    width:75.5rem;
     display: flex;
     flex-direction: row;
     margin:0 auto;
@@ -19,7 +19,7 @@ const Content = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 30.125rem;
+    width: 35rem;
     height: 22.4375rem;
     flex-shrink: 0;
     border-radius: 6.25rem;
@@ -45,16 +45,16 @@ const Content2 = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 30.125rem;
+    width: 35rem;
     height: 22.4375rem;
     flex-shrink: 0;
     border-radius: 6.25rem;
-    background: #006CBF;
+    background: #DBF5D2;
     box-shadow: 5px 2px 8px 1px #D3D3D3;
     margin-left:5.5rem;
 `;
 const RankTitle = styled.div`
-    color: #fff;
+    color: black;
     text-align: center;
     font-family: Inter;
     font-size: 1.375rem;
@@ -66,7 +66,7 @@ const RankTitle = styled.div`
 const RankLine = styled.div`
     width: 22.2rem;
     height: 0.3rem;
-    background-color: #fff;
+    background-color: black;
     flex-shrink: 0;
     margin: 0 auto;
     margin-top:0.5rem;

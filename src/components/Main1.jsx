@@ -24,7 +24,7 @@ const Main1Wrapper = styled.div`
     margin: 0 auto;    
 `;
 const Circle = styled.div`
-    background-color: #006CBF;
+    background: linear-gradient(to right, #006CBF, #fff);
     width: 20rem;
     height: 20rem;
     flex-shrink: 0;

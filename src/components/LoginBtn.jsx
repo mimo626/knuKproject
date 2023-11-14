@@ -9,24 +9,19 @@ const Container = styled.div`
     align-items: center;
     gap: 0.625rem;
     flex-shrink: 0;
-    border: 2px solid #006CBF;
+    border: 0.2rem solid #fff;
     border-radius: 18.75rem;
-    &:hover {
-        font-size: 1rem;
-        transition: all 0.3s;
-        cursor: pointer;
-    }
 `;
 const LoginText = styled.div`
-    color: #006CBF; 
+    color: #fff; 
     text-align: center;
     font-family: Inter;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 100%;
     &:hover {
-        font-size: 1rem;
+        font-size: 1.4rem;
         transition: all 0.3s;
         cursor: pointer;
     }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Page = styled.div`
     height: 55rem;
-    background-color: #FFF;
+    background-color: #E9F9FA;
     margin-top: 12rem;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -18,7 +18,7 @@ const TextWrapper = styled.div`
     height: 30%;
 `;
 const TextHot = styled.div`
-    color: #49AAF4;
+    color: black;
     font-family: Racing Sans One;
     font-size: 3.75rem;
     font-style: italic; 
@@ -28,7 +28,7 @@ const TextHot = styled.div`
     margin-top: 6.5rem;
 `;
 const TextInform = styled.div`
-    color: #9DC7E8;
+    color: #949494;
     font-family: Inter;
     font-size: 1.25rem;
     font-style: normal;
@@ -45,8 +45,8 @@ const PosterWrapper = styled.div`
     flex-wrap: wrap;
     height: 50%;
     width: 70%;
-    border-top: 2.5px solid #49AAF4;
-    border-bottom: 2.5px solid #49AAF4;
+    border-top: 2.5px solid black;
+    border-bottom: 2.5px solid black;
     margin:0 auto;
 `;
 

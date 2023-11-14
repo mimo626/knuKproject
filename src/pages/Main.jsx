@@ -9,7 +9,7 @@ import Hotprogram from "../components/Hotprogram";
 
 const Container = styled.div`
     width: 100%;
-    background-color: #E9F9FA;
+    background-color: #FFF;
 `;
 
 

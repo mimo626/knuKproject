@@ -4,13 +4,11 @@ import Field from "../components/Field";
 import knuMap from './knuMap.png';
 import { useState } from "react";
 
-
-
 const Page = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #E9F9FA;
+    background-color: #FFF;
     margin-top: 2rem;
 `;
 
@@ -20,7 +18,7 @@ const Line = styled.div`
     background-color: #54A9EA;
     flex-shrink: 0;
     margin: 0 auto;
-    margin-top: 1.5rem;
+    margin-top: 4rem;
 `;
 
 const Circle = styled.div`
@@ -36,7 +34,7 @@ const Circle = styled.div`
 const Content = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #E9F9FA;
+    background-color: #FFF;
     margin-top: 2.5rem;
 
 `;

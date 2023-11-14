@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import knuLogo from './knuLogo.png';
+import KnuLogo from './KnuLogo1.png';
 import LoginBtn from "../components/LoginBtn";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-    background-color: #E9F9FA;
+    background-color: #006CBF;
     width:100%;
     height: 4.125rem;
     position: fixed;
@@ -29,8 +29,8 @@ const HeaderWrapper = styled.ul`
 `;
 
 const Image = styled.img`
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 12rem;
+    height: 3rem;
     align-items: center;
     margin-top:0.2rem;
     margin-right: auto;
@@ -44,12 +44,12 @@ const HeaderWrapperList = styled.li`
     justify-content: center;
     align-items: center;
     gap: 0.625rem;
-    color: var(--knu, #006CBF);
+    color: #FFF;
     text-align: center;
     font-family: Inter;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 auto;
     text-decoration: none;
     line-height: 100%; /* 0.75rem */
@@ -73,7 +73,7 @@ function Header() {
         <>
         <Container>
             <HeaderWrapper>
-                <li><Image src={knuLogo} alt='강남대 로고'></Image></li>
+                <li><Image src={KnuLogo} alt='강남대 로고'></Image></li>
                 <HeaderWrapperList><a>소개</a></HeaderWrapperList>
                 <HeaderWrapperList><Link to={'/notice'}>공지사항</Link></HeaderWrapperList>
                 <HeaderWrapperList><a>프로그램</a></HeaderWrapperList>
