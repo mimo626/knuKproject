@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import knuLogo from './knuLogo.png';
 import LoginBtn from "../components/LoginBtn";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     background-color: #E9F9FA;
@@ -50,6 +51,7 @@ const HeaderWrapperList = styled.li`
     font-style: normal;
     font-weight: 500;
     margin: 0 auto;
+    text-decoration: none;
     line-height: 100%; /* 0.75rem */
     &:hover {
         font-size: 1rem;
@@ -67,18 +69,22 @@ const HeaderLine = styled.div`
 
 function Header() {
     return (
+        <>
         <Container>
             <HeaderWrapper>
                 <li><Image src={knuLogo} alt='강남대 로고'></Image></li>
                 <HeaderWrapperList><a>소개</a></HeaderWrapperList>
-                <HeaderWrapperList><a>공지사항</a></HeaderWrapperList>
+                <HeaderWrapperList><Link to={'/notice'}>공지사항</Link></HeaderWrapperList>
                 <HeaderWrapperList><a>프로그램</a></HeaderWrapperList>
                 <HeaderWrapperList><a>교내 정보</a></HeaderWrapperList>
                 <HeaderWrapperList><a>MY</a></HeaderWrapperList>
                 <HeaderWrapperList><a><LoginBtn></LoginBtn></a></HeaderWrapperList>
             </HeaderWrapper>
             <HeaderLine></HeaderLine>
-    </Container>
+        </Container>
+        
+        </>
+
     );
 }
 

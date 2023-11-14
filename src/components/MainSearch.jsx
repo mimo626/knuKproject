@@ -47,7 +47,12 @@ const SearchBtn = styled.div`
     font-style: normal;
     font-weight: 600;
     line-height: 1.2rem;
-
+    &:hover {
+        background: #fff;
+        color: #B3E1B7;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
 `;
 
 
