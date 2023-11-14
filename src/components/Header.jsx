@@ -57,6 +57,7 @@ const HeaderWrapperList = styled.li`
         font-size: 1rem;
         transition: all 0.3s;
         cursor: pointer;
+        text-decoration:none;
     }
 `;
 

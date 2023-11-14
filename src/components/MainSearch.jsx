@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import SearchBtn from "../components/SearchBtn";
+import { useState } from "react";
 
 const Page = styled.div`
     width: 100%;
@@ -6,63 +8,90 @@ const Page = styled.div`
     margin-top: 12rem;
 
 `;
+const SearchWrapper = styled.div`
+    width:65.75rem;
+    display: flex;
+    flex-direction: row;
+    margin:0 auto;
+`;
 
 const Content = styled.div`
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    flex-direction: column;
+    width: 30.125rem;
     height: 22.4375rem;
     flex-shrink: 0;
     border-radius: 6.25rem;
     background: #CAEFF4;
-    margin-top: 20rem;
-    margin: 0 auto;
     box-shadow: 5px 2px 8px 1px #D3D3D3;
-    justify-content : center;
-    width: 75rem;
 `;
 
-
-const Search = styled.div`
-    width: 20rem;
-    height: 1.5rem;
-    padding: 1.25rem 1rem;
-    gap: 0.5rem;
-    border: 3px solid #B3E1B7;
+const SearchLine = styled.div`
+    width: 22.2rem;
+    height: 0.3rem;
+    background-color: #006CBF;
+    flex-shrink: 0;
+    margin-top:4.4rem;
+`;
+const RecentSearch = styled.div`
+    width: 22.2rem;
+    height: 12.5625rem;
+    flex-shrink: 0;
+    border: 1px solid #DCF6FA;
     background: #FFF;
-    margin-top:2rem;
 `;
-
-const SearchBtn = styled.div`
-    width: 4rem;
-    height: 1.5rem;
-    padding: 1.25rem 1rem;
-    gap: 0.5rem;
-    border: 3px solid #B3E1B7;
-    background: #B3E1B7; 
-    margin-top:2rem;
-    color: #FFF;
-    align-items : center;
+const Content2 = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30.125rem;
+    height: 22.4375rem;
+    flex-shrink: 0;
+    border-radius: 6.25rem;
+    background: #006CBF;
+    box-shadow: 5px 2px 8px 1px #D3D3D3;
+    margin-left:5.5rem;
+`;
+const RankTitle = styled.div`
+    color: #fff;
+    text-align: center;
     font-family: Inter;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     font-style: normal;
     font-weight: 600;
-    line-height: 1.2rem;
-    &:hover {
-        background: #fff;
-        color: #B3E1B7;
-        transition: all 0.3s;
-        cursor: pointer;
-    }
+    margin-top:3.8rem;
+    margin-bottom:0.3rem;
+`;
+const RankLine = styled.div`
+    width: 22.2rem;
+    height: 0.3rem;
+    background-color: #fff;
+    flex-shrink: 0;
+    margin: 0 auto;
+    margin-top:0.5rem;
+    margin-bottom:17rem;
 `;
 
-
 function MainSearch() {
+    const [search, setSearch] = useState(true)
     return (
         <Page>
-            <Content>
-                <Search></Search>
-                <SearchBtn>search</SearchBtn>
-            </Content>
+            <SearchWrapper>
+                <Content>
+                    <SearchBtn switch={setSearch}></SearchBtn>
+                    <SearchLine></SearchLine>
+                    {
+                    search 
+                    ? <div></div>
+                    : <RecentSearch>최근 검색어</RecentSearch> 
+                    }
+                </Content>
+                <Content2>
+                    <RankTitle>실시간 검색어 랭킹</RankTitle>
+                    <RankLine></RankLine>
+                </Content2>
+            </SearchWrapper>
         </Page>
     );
 }

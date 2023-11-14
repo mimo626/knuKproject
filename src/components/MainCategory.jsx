@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Tab from "../components/Tab";
+import Field from "../components/Field";
 import knuMap from './knuMap.png';
 import { useState } from "react";
 
@@ -77,7 +78,7 @@ function MainCategory() {
                 {
                     tab 
                     ? <Map src={knuMap} alt='강남대 지도' /> 
-                    : <div></div>
+                    : <Field></Field>
                 }
                 <Circle2></Circle2>
                 <Line2></Line2>
