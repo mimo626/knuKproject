@@ -4,84 +4,113 @@ import LoginBtn from "../components/LoginBtn";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
+    display: flex;
+    flex-direction: row;
     background-color: #006CBF;
     width:100%;
     height: 4.125rem;
     position: fixed;
     top: 0;
     overflow: hidden;
-    border-bottom: 1px solid #006CBF;
-
 `;
-
-const HeaderWrapper = styled.ul`
+const Content = styled.ul`
     display: flex;
     flex-direction: row;
-    align-items: center;
-    list-style: none;
+    justify-content: center;
+    align-items: center;    
     padding: 0;
-    gap: 1em;
     margin: 0 auto;
-    flex-shrink: 2;
-    margin-left: 6.5rem;
-    margin-right: 6.5rem;
     list-style-type: none;
 `;
-
 const Image = styled.img`
     width: 12rem;
     height: 3rem;
-    align-items: center;
-    margin-top:0.2rem;
-    margin-right: auto;
+    margin-right: 8rem;
 `;
-
+const HeaderWrapper = styled.ul`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    
+    padding: 0;
+    margin: 0 auto;
+`;
 const HeaderWrapperList = styled.li`
     display: flex;
-    width: 13.69969rem;
+    width: 10rem;
     height: 2.5625rem;
-    padding: 0.75rem 2.5rem;
     justify-content: center;
     align-items: center;
-    gap: 0.625rem;
     color: #FFF;
     text-align: center;
     font-family: Inter;
     font-size: 1.2rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0 auto;
-    text-decoration: none;
     line-height: 100%; /* 0.75rem */
+    &:link{
+        color: #fff;
+    }
     &:hover {
-        font-size: 1rem;
+        font-size: 1.4rem;
         transition: all 0.3s;
         cursor: pointer;
-        text-decoration:none;
     }
 `;
 
-const HeaderLine = styled.div`
-    width: 76.875rem;
-    stroke-width: 2px;
-    stroke: var(--knu, #006CBF);    
-    flex-shrink: 0;
+const SideWrapper = styled.ul`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;    
+    padding: 0;
+    margin: 0 auto;
+    margin-left: 8rem;
+`;
+
+const SideWrapperList = styled.li`
+    display: flex;
+    width: 6rem;
+    height: 2.5625rem;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 auto;
+    line-height: 100%; /* 0.75rem */
+    &:link{
+        color: #fff;
+    }
+    &:hover {
+        font-size: 1.2rem;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
 `;
 
 function Header() {
     return (
         <>
         <Container>
-            <HeaderWrapper>
-                <li><Image src={KnuLogo} alt='강남대 로고'></Image></li>
-                <HeaderWrapperList><a>소개</a></HeaderWrapperList>
-                <HeaderWrapperList><Link to={'/notice'}>공지사항</Link></HeaderWrapperList>
-                <HeaderWrapperList><a>프로그램</a></HeaderWrapperList>
-                <HeaderWrapperList><a>교내 정보</a></HeaderWrapperList>
-                <HeaderWrapperList><a>MY</a></HeaderWrapperList>
-                <HeaderWrapperList><a><LoginBtn></LoginBtn></a></HeaderWrapperList>
-            </HeaderWrapper>
-            <HeaderLine></HeaderLine>
+            <Content>
+                <Image src={KnuLogo} alt='강남대 로고'></Image>
+                <HeaderWrapper>
+                    <Link to={'/intro'} style={{ textDecoration: "none"}}><HeaderWrapperList>소개</HeaderWrapperList></Link>
+                    <Link to={'/notice'} style={{ textDecoration: "none"}}><HeaderWrapperList>공지사항</HeaderWrapperList></Link>
+                    <HeaderWrapperList><a>프로그램</a></HeaderWrapperList>
+                    <HeaderWrapperList><a>교내 정보</a></HeaderWrapperList>
+                </HeaderWrapper>
+                <SideWrapper>
+                    <Link to={'/my'} style={{ textDecoration: "none"}}><SideWrapperList>My</SideWrapperList></Link>
+                    <Link to={'/login'} style={{ textDecoration: "none"}}><SideWrapperList><LoginBtn></LoginBtn></SideWrapperList></Link>
+                </SideWrapper>
+            </Content>
         </Container>
         
         </>

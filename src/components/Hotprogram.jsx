@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 const Page = styled.div`
     height: 55rem;
+    width:99%;
     background-color: #E9F9FA;
-    margin-top: 12rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 0 auto;
 `;
 const TextWrapper = styled.div`
     display: flex;

@@ -49,15 +49,7 @@ const Text = styled.div`
     font-weight: 800; 
     margin-top: 1rem;
 `;
-const MainBtnWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    width:23.5rem;
-    flex-shrink: 0;
-    padding-top: 2.5rem;
-    margin: 0 auto;
-`;
-const Promotion = styled.img`
+const KImg = styled.img`
     width: 50rem;
     height: 35rem;
     border-radius: 4.8125rem; 
@@ -82,10 +74,8 @@ function Main1() {
                         desired by<br /> 
                         KNU students
                     </Text>
-                    <MainBtnWrapper>
-                    </MainBtnWrapper>
                 </Main1Wrapper>
-                <Promotion src="img/knu_view.webp" />
+                <KImg src="img/knu_view.webp" />
             </Content>
         </Page>
     );

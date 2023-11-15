@@ -39,8 +39,8 @@ const Content = styled.div`
 
 `;
 const Map = styled.img`
-    width: 62.5rem;
-    height: 43.99875rem;
+    max-height: 100 %; 
+    width: auto; 
     flex-shrink: 0;
     margin: 0 auto;
     margin-top:2.6rem;

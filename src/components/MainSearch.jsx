@@ -40,6 +40,7 @@ const RecentSearch = styled.div`
     flex-shrink: 0;
     border: 1px solid #DCF6FA;
     background: #FFF;
+    box-shadow: 2px 2px 3px 1px #D3D3D3;
 `;
 const Content2 = styled.div`
     display: flex;
