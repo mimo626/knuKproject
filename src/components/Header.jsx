@@ -1,17 +1,18 @@
 import styled from "styled-components";
-import KnuLogo from './KnuLogo1.png';
+import KnuLogo from './knuLogo.png';
 import LoginBtn from "../components/LoginBtn";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    background-color: #006CBF;
+    background-color: #E9F9FA;
     width:100%;
-    height: 4.125rem;
+    height: 6rem;
     position: fixed;
     top: 0;
     overflow: hidden;
+    border-bottom: 2px solid gray;
 `;
 const Content = styled.ul`
     display: flex;
@@ -23,8 +24,8 @@ const Content = styled.ul`
     list-style-type: none;
 `;
 const Image = styled.img`
-    width: 12rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
     margin-right: 8rem;
 `;
 const HeaderWrapper = styled.ul`
@@ -41,7 +42,7 @@ const HeaderWrapperList = styled.li`
     height: 2.5625rem;
     justify-content: center;
     align-items: center;
-    color: #FFF;
+    color: black;
     text-align: center;
     font-family: Inter;
     font-size: 1.2rem;
@@ -75,7 +76,8 @@ const SideWrapperList = styled.li`
     height: 2.5625rem;
     justify-content: center;
     align-items: center;
-    color: #FFF;
+    color: black;
+
     text-align: center;
     font-family: Inter;
     font-size: 1rem;

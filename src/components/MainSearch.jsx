@@ -4,8 +4,9 @@ import { useState } from "react";
 
 const Page = styled.div`
     width: 100%;
-    background-color: #FFF;
+    background:#E9F9FA;
     margin-top: 12rem;
+    margin-bottom: 8rem;
 
 `;
 const SearchWrapper = styled.div`
@@ -22,8 +23,8 @@ const Content = styled.div`
     width: 35rem;
     height: 22.4375rem;
     flex-shrink: 0;
-    border-radius: 6.25rem;
-    background: #CAEFF4;
+    border-radius: 3rem;
+    background: #fff;
     box-shadow: 5px 2px 8px 1px #D3D3D3;
 `;
 
@@ -49,13 +50,13 @@ const Content2 = styled.div`
     width: 35rem;
     height: 22.4375rem;
     flex-shrink: 0;
-    border-radius: 6.25rem;
-    background: #DBF5D2;
+    border-radius: 3rem;
+    background: #54A9EA;
     box-shadow: 5px 2px 8px 1px #D3D3D3;
     margin-left:5.5rem;
 `;
 const RankTitle = styled.div`
-    color: black;
+    color: #fff;
     text-align: center;
     font-family: Inter;
     font-size: 1.375rem;
@@ -67,7 +68,7 @@ const RankTitle = styled.div`
 const RankLine = styled.div`
     width: 22.2rem;
     height: 0.3rem;
-    background-color: black;
+    background-color: #fff;
     flex-shrink: 0;
     margin: 0 auto;
     margin-top:0.5rem;

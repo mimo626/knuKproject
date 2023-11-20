@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import ProgramContainer from "../components/ProgramContainer";
+
 
 const Page = styled.div`
     height: 55rem;
-    width:99%;
-    background-color: #E9F9FA;
-    margin: 0 auto;
+    width:100%;
+    background-color: #ADC9F7;
+    padding-bottom:8rem;
 `;
 const TextWrapper = styled.div`
     display: flex;
@@ -17,7 +19,7 @@ const TextWrapper = styled.div`
     height: 30%;
 `;
 const TextHot = styled.div`
-    color: black;
+    color:#fff;
     font-family: Racing Sans One;
     font-size: 3.75rem;
     font-style: italic; 
@@ -27,27 +29,27 @@ const TextHot = styled.div`
     margin-top: 6.5rem;
 `;
 const TextInform = styled.div`
-    color: #949494;
+    color: #fff;
     font-family: Inter;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: 1rem; 
     text-align: center;
     margin-top: 3.5rem;
 `;
-const PosterWrapper = styled.div`
+const ProgramWrapper = styled.div`
+    height: 35.0625rem;
     display: flex;
-    align-items: center;
-    align-content: center;
-    gap: 4.0625rem 2.1875rem;
+    flex-shrink: 0;
+    margin-top: 1rem;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 2.75rem;
     flex-wrap: wrap;
-    height: 50%;
-    width: 70%;
-    border-top: 2.5px solid black;
-    border-bottom: 2.5px solid black;
-    margin:0 auto;
+    border: 3px solid black;
 `;
+
 
 function Main() {
     return (
@@ -56,8 +58,12 @@ function Main() {
                 <TextHot>Hot Program</TextHot>
                 <TextInform>인기 있는 비교과 프로그램을 확인해보세요!</TextInform>
             </TextWrapper>
-            <PosterWrapper>
-            </PosterWrapper>
+            <ProgramWrapper>
+                <ProgramContainer>
+                </ProgramContainer>
+                <ProgramContainer></ProgramContainer>
+                <ProgramContainer></ProgramContainer>
+            </ProgramWrapper>
         </Page>
     );
 }

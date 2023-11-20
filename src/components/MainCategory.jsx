@@ -1,25 +1,36 @@
 import styled from "styled-components";
 import Tab from "../components/Tab";
 import Field from "../components/Field";
-import knuMap from './knuMap.png';
+import Major from "../components/Major";
 import { useState } from "react";
 
 const Page = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #FFF;
+    background-color: #fff;
     margin-top: 2rem;
 `;
 
-const Line = styled.div`
-    width: 0.2rem;
-    height: 9.4375rem;
-    background-color: #54A9EA;
-    flex-shrink: 0;
-    margin: 0 auto;
-    margin-top: 4rem;
+
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+
 `;
+const CategoryTitle = styled.div`
+    color: black;
+    font-family: Racing Sans One;
+    font-size: 3.75rem;
+    font-style: italic; 
+    font-weight: 700;
+    line-height: 1rem; 
+    text-align: center;
+    margin-top: 8rem;
+    margin-bottom: 6rem;
+`;
+
 
 const Circle = styled.div`
     background-color: #54A9EA;
@@ -27,39 +38,14 @@ const Circle = styled.div`
     width: 3.3rem;
     height: 3.3rem;
     margin: 0 auto;
-    margin-top: 1.5rem;
-
-`;
-
-const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    background-color: #FFF;
     margin-top: 2.5rem;
 
 `;
-const Map = styled.img`
-    max-height: 100 %; 
-    width: auto; 
-    flex-shrink: 0;
-    margin: 0 auto;
-    margin-top:2.6rem;
-`;
 
-const Circle2 = styled.div`
-    background-color: #B3E1B7;
-    border-radius: 5rem;
-    width: 3.3rem;
-    height: 3.3rem;
-    margin: 0 auto;
-    margin-top: 5.1rem;
-
-`;
-
-const Line2 = styled.div`
+const Line = styled.div`
     width: 0.2rem;
     height: 9.4375rem;
-    background-color: #B3E1B7;
+    background-color: #54A9EA;
     flex-shrink: 0;
     margin: 0 auto;
     margin-top: 1.5rem;
@@ -70,16 +56,15 @@ function MainCategory() {
 
     return (
         <Page>
-            <Line></Line>
-            <Circle></Circle>
+            <CategoryTitle>Program Category</CategoryTitle>
             <Content>
                 {
                     tab 
-                    ? <Map src={knuMap} alt='강남대 지도' /> 
+                    ? <Major></Major>
                     : <Field></Field>
                 }
-                <Circle2></Circle2>
-                <Line2></Line2>
+                <Circle></Circle>
+                <Line></Line>
                 <Tab left={'단과대별'} right={'분야별'} switch={setTab}/>
             </Content>
         </Page>

@@ -9,11 +9,11 @@ const Container = styled.div`
     align-items: center;
     gap: 0.625rem;
     flex-shrink: 0;
-    border: 0.1rem solid #fff;
+    border: 0.1rem solid black;
     border-radius: 18.75rem;
 `;
 const LoginText = styled.div`
-    color: #fff; 
+    color: black;
     text-align: center;
     font-family: Inter;
     font-size: 1rem;

@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const FieldWrapper = styled.div`
+const MajorWrapper = styled.div`
     display: flex;
-    width: 77.237rem;
+    width: 97.3rem;
     align-items: flex-start;
     align-content: flex-start;
     gap: 2.75rem;
     flex-wrap: wrap;
     margin: 0 auto;
 `;
-const FieldUniv = styled.div`
+const MajorEngineer = styled.div`
 display: flex;
 width: 16rem;
 height: 16rem;
@@ -27,7 +27,7 @@ font-size: 2rem;
 font-style: normal;
 font-weight: 700;
 `;
-const FieldJob = styled.div`
+const MajorWelfare = styled.div`
 display: flex;
 width: 16rem;
 height: 16rem;
@@ -44,26 +44,7 @@ font-size: 2rem;
 font-style: normal;
 font-weight: 700;
 `;
-
-const FieldStudy = styled.div`
-display: flex;
-width: 16rem;
-height: 16rem;
-padding: 1.875rem 0.625rem;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 0.5rem;
-flex-shrink: 0;
-border-radius: 1.25rem;
-background: #006CBF;
-color: #fff;
-font-size: 2rem;
-font-style: normal;
-font-weight: 700;
-
-`;
-const FieldNotice = styled.div`
+const MajorGlobal = styled.div`
 display: flex;
 width: 16rem;
 height: 16rem;
@@ -81,17 +62,54 @@ font-style: normal;
 font-weight: 700;
 `;
 
+const MajorManage = styled.div`
+display: flex;
+width: 16rem;
+height: 16rem;
+padding: 1.875rem 0.625rem;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 0.5rem;
+flex-shrink: 0;
+border-radius: 1.25rem;
+background: #006CBF;
+color: #fff;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+
+`;
+const MajorEdu = styled.div`
+display: flex;
+width: 16rem;
+height: 16rem;
+padding: 1.875rem 0.625rem;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 0.5rem;
+flex-shrink: 0;
+border-radius: 1.25rem;
+background: #006CBF;
+color: #fff;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+`;
 
 
-function Main() {
+
+function Major() {
     return (
-        <FieldWrapper>
-            <Link to={'/fieldUniv'} style={{ textDecoration: "none"}}><FieldUniv >ICT융합공학부</FieldUniv></Link>
-            <Link to={'/fieldJob'} style={{ textDecoration: "none"}}><FieldJob>취창업</FieldJob></Link>
-            <Link to={'/fieldStudy'} style={{ textDecoration: "none"}}><FieldStudy>학습/상담</FieldStudy></Link>
-            <Link to={'/fieldNotice'} style={{ textDecoration: "none"}}><FieldNotice>행사/안내</FieldNotice></Link>
-        </FieldWrapper>
+        <MajorWrapper>
+            <Link to={'/majorEngineer'} style={{ textDecoration: "none"}}><MajorEngineer >공과대학</MajorEngineer></Link>
+            <Link to={'/majorWelfare'} style={{ textDecoration: "none"}}><MajorWelfare>복지융합대학</MajorWelfare></Link>
+            <Link to={'/majorGlobal'} style={{ textDecoration: "none"}}><MajorGlobal>글로벌인재대학</MajorGlobal></Link>
+            <Link to={'/majorManage'} style={{ textDecoration: "none"}}><MajorManage>경영관리대학</MajorManage></Link>
+            <Link to={'/majorEdu'} style={{ textDecoration: "none"}}><MajorEdu>사범대학</MajorEdu></Link>
+        </MajorWrapper>
     );
 }
 
-export default Main;
+export default Major;
