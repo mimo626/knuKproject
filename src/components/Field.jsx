@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 
 const FieldWrapper = styled.div`
     display: flex;
-    width: 77.237rem;
+    width: 77.3rem;
     align-items: flex-start;
     align-content: flex-start;
     gap: 2.75rem;
     flex-wrap: wrap;
     margin: 0 auto;
+
+
 `;
 const FieldUniv = styled.div`
 display: flex;
 width: 16rem;
-height: 16rem;
+height: 14rem;
 padding: 1.875rem 0.625rem;
 flex-direction: column;
 justify-content: center;
@@ -30,7 +32,7 @@ font-weight: 700;
 const FieldJob = styled.div`
 display: flex;
 width: 16rem;
-height: 16rem;
+height: 14rem;
 padding: 1.875rem 0.625rem;
 flex-direction: column;
 justify-content: center;
@@ -48,7 +50,7 @@ font-weight: 700;
 const FieldStudy = styled.div`
 display: flex;
 width: 16rem;
-height: 16rem;
+height: 14rem;
 padding: 1.875rem 0.625rem;
 flex-direction: column;
 justify-content: center;
@@ -66,7 +68,7 @@ font-weight: 700;
 const FieldNotice = styled.div`
 display: flex;
 width: 16rem;
-height: 16rem;
+height: 14rem;
 padding: 1.875rem 0.625rem;
 flex-direction: column;
 justify-content: center;

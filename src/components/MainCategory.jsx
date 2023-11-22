@@ -38,8 +38,6 @@ const Circle = styled.div`
     width: 3.3rem;
     height: 3.3rem;
     margin: 0 auto;
-    margin-top: 2.5rem;
-
 `;
 
 const Line = styled.div`

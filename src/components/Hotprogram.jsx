@@ -39,15 +39,13 @@ const TextInform = styled.div`
     margin-top: 3.5rem;
 `;
 const ProgramWrapper = styled.div`
+    width:65%;
     height: 35.0625rem;
     display: flex;
+    flex-direction: row;
     flex-shrink: 0;
     margin-top: 1rem;
-    align-items: flex-start;
-    align-content: flex-start;
-    gap: 2.75rem;
-    flex-wrap: wrap;
-    border: 3px solid black;
+    margin:0 auto;
 `;
 
 
