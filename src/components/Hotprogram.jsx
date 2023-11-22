@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import ProgramContainer from "../components/ProgramContainer";
+import { useContext } from "react";
+import { MainContext } from "../services/MainProvider";
 
 
 const Page = styled.div`
@@ -51,7 +53,8 @@ const ProgramWrapper = styled.div`
 `;
 
 
-function Main() {
+function Main(props) {
+    const notice = useContext(MainContext);
     return (
         <Page>
             <TextWrapper>

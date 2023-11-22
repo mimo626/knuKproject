@@ -30,7 +30,7 @@ function LoginBtn() {
 
     return (
         <Container>
-            <LoginText><a>Log in</a></LoginText>
+            <LoginText>Log in</LoginText>
         </Container>
     );
 }
