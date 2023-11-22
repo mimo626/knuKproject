@@ -1,7 +1,7 @@
 
 function My(){
     return(
-        <h1>my</h1>
+        <Header></Header>
     );
     }
     export default My; 
