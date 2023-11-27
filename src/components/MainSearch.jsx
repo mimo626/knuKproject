@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Page = styled.div`
     width: 100%;
-    background:#E9F9FA;
+    background:#fff;
     margin-top: 8rem;
     margin-bottom: 8rem;
 

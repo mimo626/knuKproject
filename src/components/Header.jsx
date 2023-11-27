@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    background-color: #E9F9FA;
+    background-color: #fff;
     width:100%;
     height: 6rem;
     position: fixed;
     top: 0;
     overflow: hidden;
-    border-bottom: 2px solid gray;
 `;
 const Content = styled.ul`
     display: flex;

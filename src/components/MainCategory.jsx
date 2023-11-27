@@ -8,7 +8,7 @@ const Page = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: #fff;
+    background-color: #E9F9FA;
     margin-top: 2rem;
 `;
 
@@ -38,6 +38,7 @@ const Circle = styled.div`
     width: 3.3rem;
     height: 3.3rem;
     margin: 0 auto;
+    margin-top:2rem;
 `;
 
 const Line = styled.div`

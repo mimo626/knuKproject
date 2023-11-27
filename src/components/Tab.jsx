@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
     width: 100%;
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
 `;
 
 const MenuWrapper = styled.div`

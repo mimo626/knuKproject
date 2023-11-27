@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import poster1 from './poster1.png';
+import poster2 from './poster2.png';
+import poster3 from './poster3.png';
 
 const ProgramContainer = styled.div`
     display: flex;
@@ -52,7 +55,7 @@ function Main() {
     return (
         <ProgramContainer>
             <ProgramImgWrapper>
-                <ProgramImg></ProgramImg>
+                <ProgramImg  src={poster1} alt='포스터' ></ProgramImg>
             </ProgramImgWrapper>
             <ProgramLikeWrapper></ProgramLikeWrapper>
             <ProgramTitleWrapper></ProgramTitleWrapper>

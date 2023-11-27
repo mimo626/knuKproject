@@ -4,7 +4,7 @@ const Page = styled.div`
     height: 35.5625rem;
     width:100%;
     padding-top:10rem;
-    background:#E9F9FA;
+    background:#fff;
 
 `;
 const Content = styled.div`

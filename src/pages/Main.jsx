@@ -8,7 +8,7 @@ import MainProvider from "../services/MainProvider";
 
 const Container = styled.div`
     width: 100%;
-    background:#E9F9FA;
+    background:#fff;
     
 `;
 
