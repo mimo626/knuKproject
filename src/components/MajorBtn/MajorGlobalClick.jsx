@@ -99,10 +99,10 @@ margin: 0 auto;
 function MajorGlobalClick() {
     return (
         <GlobalContainer>
-            <GlobalBtn>글로벌학부</GlobalBtn>
-            <MusicBtn>음악학과</MusicBtn>
-            <ChristianBtn>기독교학과</ChristianBtn>
-            <ContentBtn>한영문화콘텐츠학과</ContentBtn>
+            <GlobalBtn><Link to={'/field/major/글로벌문화학부/page/1'} style={{ textDecoration: "none"}}>글로벌학부</Link></GlobalBtn>
+            <MusicBtn><Link to={'/field/major/음악학과/page/1'} style={{ textDecoration: "none"}}>음악학과</Link></MusicBtn>
+            <ChristianBtn><Link to={'/field/major/기독교학과/page/1'} style={{ textDecoration: "none"}}>기독교학과</Link></ChristianBtn>
+            <ContentBtn><Link to={'/field/major/글로벌문화학부/page/1'} style={{ textDecoration: "none"}}>한영문화콘텐츠학과</Link></ContentBtn>
         </GlobalContainer>
            
     );

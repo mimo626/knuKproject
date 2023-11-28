@@ -79,9 +79,9 @@ margin: 0 auto;
 function MajorEduClick() {
     return (
         <EduContainer>
-            <EduBtn>교육학과</EduBtn>
-            <ChildBtn>유아교육학과</ChildBtn>
-            <SpecialBtn>특수교육학과</SpecialBtn>
+            <EduBtn><Link to={'/field/major/교육학과/page/1'} style={{ textDecoration: "none"}}>교육학과</Link></EduBtn>
+            <ChildBtn><Link to={'/field/major/유아교육과/page/1'} style={{ textDecoration: "none"}}>유아교육과</Link></ChildBtn>
+            <SpecialBtn><Link to={'/field/major/특수교육과/page/1'} style={{ textDecoration: "none"}}>특수교육과</Link></SpecialBtn>
         </EduContainer>
            
     );

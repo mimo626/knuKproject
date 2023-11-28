@@ -95,14 +95,14 @@ margin: 0 auto;
     cursor: pointer;
 }
 `;
-
+//융합자유전공학부 데이터 없음
 function MajorManageClick() {
     return (
         <ManageContainer>
-            <ManageBtn>글로벌경영학부</ManageBtn>
-            <PublicBtn>공공인재학과</PublicBtn>
-            <EconomyBtn>경제세무학과</EconomyBtn>
-            <FreeBtn>융합자유전공학부</FreeBtn>
+            <ManageBtn><Link to={'/field/major/글로벌경영학부/page/1'} style={{ textDecoration: "none"}}>글로벌경영학부</Link></ManageBtn>
+            <PublicBtn><Link to={'/field/major/정경학부/page/1'} style={{ textDecoration: "none"}}>공공인재학과</Link></PublicBtn>
+            <EconomyBtn><Link to={'/field/major/정경학부/page/1'} style={{ textDecoration: "none"}}>경제세무학과</Link></EconomyBtn>
+            <FreeBtn><Link to={'/field/major/융합자유전공학부/page/1'} style={{ textDecoration: "none"}}>융합자유전공학부</Link></FreeBtn>
         </ManageContainer>
            
     );
