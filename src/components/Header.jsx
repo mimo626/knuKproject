@@ -2,13 +2,16 @@ import styled from "styled-components";
 import KnuLogo from './knuLogo.png';
 import LoginBtn from "../components/LoginBtn";
 import { Link } from "react-router-dom";
+import SearchBtn from "../components/SearchBtn";
+import SearchClick from "../components/SearchClick";
+import { useState } from "react";
 
 const Container = styled.div`
     display: flex;
     flex-direction: row;
     background-color: #fff;
     width:100%;
-    height: 6rem;
+    height: 8rem;
     position: fixed;
     top: 0;
     overflow: hidden;
@@ -68,7 +71,19 @@ const SideWrapper = styled.ul`
     margin: 0 auto;
     margin-left: 8rem;
 `;
+const SearchWrapper = styled.div`
+    width:12rem;
+    display: flex;
+    flex-direction: column;
+    margin:0 auto;
+`;
 
+const SearchLine = styled.div`
+    width: 11rem;
+    height: 0.1rem;
+    background-color: black;
+    flex-shrink: 0;
+`;
 const SideWrapperList = styled.li`
     display: flex;
     width: 6rem;
@@ -96,11 +111,13 @@ const SideWrapperList = styled.li`
 `;
 
 function Header() {
+    const [search, setSearch] = useState(true)
+
     return (
         <>
         <Container>
             <Content>
-                <Image src={KnuLogo} alt='강남대 로고'></Image>
+            <Link to={'/main'} style={{ textDecoration: "none"}}><Image src={KnuLogo} alt='강남대 로고'></Image></Link>
                 <HeaderWrapper>
                     <Link to={'/intro'} style={{ textDecoration: "none"}}><HeaderWrapperList>소개</HeaderWrapperList></Link>
                     <Link to={'/notice'} style={{ textDecoration: "none"}}><HeaderWrapperList>공지사항</HeaderWrapperList></Link>
@@ -108,8 +125,17 @@ function Header() {
                     <HeaderWrapperList><a>교내 정보</a></HeaderWrapperList>
                 </HeaderWrapper>
                 <SideWrapper>
+                    <SearchWrapper>
+                        <SearchBtn switch={setSearch}></SearchBtn>
+                        <SearchLine></SearchLine>
+                        {
+                        search 
+                        ? <div></div>
+                        : <SearchClick></SearchClick>
+                        }
+                    </SearchWrapper>
                     <Link to={'/my'} style={{ textDecoration: "none"}}><SideWrapperList>My</SideWrapperList></Link>
-                    <Link to={'/login'} style={{ textDecoration: "none"}}><SideWrapperList><LoginBtn></LoginBtn></SideWrapperList></Link>
+                    <SideWrapperList><LoginBtn></LoginBtn></SideWrapperList>
                 </SideWrapper>
             </Content>
         </Container>
