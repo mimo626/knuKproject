@@ -9,7 +9,6 @@ import MainProvider from "../services/MainProvider";
 const Container = styled.div`
     width: 100%;
     background:#fff;
-    
 `;
 
 
@@ -18,10 +17,10 @@ function Main() {
         <MainProvider>
             <Container>
                 <Header />
-                <Main1></Main1>
-                <MainSearch></MainSearch>
-                <MainCategory></MainCategory>
-                <Hotprogram></Hotprogram>
+                <Main1 />
+                <MainSearch />
+                <MainCategory />
+                <Hotprogram />
             </Container>
         </MainProvider>
     );
