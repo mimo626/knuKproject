@@ -134,8 +134,42 @@ const ProgramTitleWrapper = styled.div`
     }
 `;
 
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 function Main(props) {
-    const notice = useContext(MainContext);
+    const [topLikes, setTopLikes] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.post('http://localhost:8080/notice/top3likes/실버산업학과', {
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = response.data;
+
+                const modifiedData = data.map(item => {
+                    if (item.img) {
+                        const images = item.img.split(';');
+                        return { ...item, images };
+                    }
+                    return item;
+                });
+
+                setTopLikes(modifiedData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [props.major]);
+
+
     return (
         <Page>
             <TextWrapper>
@@ -143,55 +177,27 @@ function Main(props) {
                 <TextInform>인기 있는 비교과 프로그램을 확인해보세요!</TextInform>
             </TextWrapper>
             <ProgramWrapper>
-                <ProgramContainer>
-                    <ProgramImgWrapper>
-                        <ProgramImg  src={poster1} alt='포스터' ></ProgramImg>
-                    </ProgramImgWrapper>
-                    <ProgramLCWrapper>
-                        <ProgramLikeWrapper>
-                            <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                            <LikeCount>56</LikeCount>
-                        </ProgramLikeWrapper>
+                {topLikes.map((item, index) => (
+                    <ProgramContainer key={index}>
+                        {item.images && item.images.length > 0 && (
+                            <ProgramImgWrapper>
+                                <ProgramImg src={item.images[0]} alt={`포스터 ${index + 1}`} />
+                            </ProgramImgWrapper>
+                        )}
+                        <ProgramLCWrapper>
+                            <ProgramLikeWrapper>
+                                <IoIosHeart style={{ paddingLeft: 12, paddingTop: 1.3 }} size={35} />
+                                <LikeCount>{item.likeCount}</LikeCount>
+                            </ProgramLikeWrapper>
+                            {/*댓글 어떻게 할 것인지
                         <ProgramComment>
-                            <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                            <TextCount>34</TextCount>
-                        </ProgramComment>
-                    </ProgramLCWrapper>
-                    <ProgramTitleWrapper>KT 에이블 스쿨 5기 지역추천제 선발/모집 (~12/8)</ProgramTitleWrapper>
-                </ProgramContainer>
-                <ProgramContainer>
-                    <ProgramImgWrapper>
-                        <ProgramImg  src={poster2} alt='포스터' ></ProgramImg>
-                    </ProgramImgWrapper>
-                    <ProgramLCWrapper>
-                        <ProgramLikeWrapper>
-                            <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                            <LikeCount>120</LikeCount>
-                        </ProgramLikeWrapper>
-                        <ProgramComment>
-                            <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                            <TextCount>56</TextCount>
-                        </ProgramComment>
-                    </ProgramLCWrapper>
-                    <ProgramTitleWrapper>취업콘텐츠 영상 자율강좌 시청 안내</ProgramTitleWrapper>
-                </ProgramContainer>
-                <ProgramContainer>
-                    <ProgramImgWrapper>
-                        <ProgramImg  src={poster3} alt='포스터' ></ProgramImg>
-                    </ProgramImgWrapper>
-                    <ProgramLCWrapper>
-                        <ProgramLikeWrapper>
-                            <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                            <LikeCount>22</LikeCount>
-                        </ProgramLikeWrapper>
-                        <ProgramComment>
-                            <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                            <TextCount>13</TextCount>
-                        </ProgramComment>
-                    </ProgramLCWrapper>
-                    <ProgramTitleWrapper>[11/8] MBTI 사랑으로 통역이 되나요? 더 레인보우 특강 수강생 모집</ProgramTitleWrapper>
-                </ProgramContainer>
-
+                        <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
+                        <TextCount>{item.댓글갯수변수명}</TextCount>
+                        </ProgramComment>*/}
+                        </ProgramLCWrapper>
+                        <ProgramTitleWrapper>{item.title}</ProgramTitleWrapper>
+                    </ProgramContainer>
+                ))}
             </ProgramWrapper>
         </Page>
     );
