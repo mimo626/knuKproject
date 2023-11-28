@@ -11,10 +11,10 @@ import MajorWelfare from './pages/MajorPage/MajorWelfare';
 import MajorGlobal from './pages/MajorPage/MajorGlobal';
 import MajorManage from './pages/MajorPage/MajorManage';
 import MajorEdu from './pages/MajorPage/MajorEdu';
-import FieldUniv from './pages/FieldPage/FieldUniv';
-import FieldJob from './pages/FieldPage/FieldJob';
-import FieldStudy from './pages/FieldPage/FieldStudy';
-import FieldNotice from './pages/FieldPage/FieldNotice';
+import FieldMajor from './pages/FieldPage/FieldMajor';
+import FieldType from './pages/FieldPage/FieldType';
+import FieldRead from './pages/FieldPage/FieldRead';
+
 
 
 
@@ -34,10 +34,10 @@ function App() {
       <Route path='/majorGlobal' element={<MajorGlobal/>}></Route>
       <Route path='/majorManage' element={<MajorManage/>}></Route>
       <Route path='/majorEdu' element={<MajorEdu/>}></Route>
-      <Route path='/fieldUniv' element={<FieldUniv/>}></Route>
-      <Route path='/fieldJob' element={<FieldJob/>}></Route>
-      <Route path='/fieldStudy' element={<FieldStudy/>}></Route>
-      <Route path='/fieldNotice' element={<FieldNotice/>}></Route>
+
+      <Route path="/field/type/:type?" element={<FieldType/>}></Route>
+      <Route path="/field/major/:major?" element={<FieldMajor/>}></Route>
+      <Route path="/field/read/:noticeId?" element={<FieldRead/>}></Route>
     </Routes>
   );
 }
