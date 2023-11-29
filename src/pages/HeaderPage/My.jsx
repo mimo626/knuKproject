@@ -55,7 +55,7 @@ const MyTitleWrapper = styled.div`
     display: flex;
     flex-direction: row;
     width: 20%;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-style: normal;
     font-weight: 600;
     border-right: 1px solid #D3D3D3;
@@ -236,7 +236,7 @@ function My(){
                 </MyContent>
                 <MYLine2></MYLine2>
                 <MyContent>
-                    <MyTitleWrapper2>좋아요 누른 게시물</MyTitleWrapper2>
+                    <MyTitleWrapper2>좋아요 누른 <br></br>게시물</MyTitleWrapper2>
                     <MyInfromWrapper2>
                         <ProgramContainer>
                             <ProgramImgWrapper>

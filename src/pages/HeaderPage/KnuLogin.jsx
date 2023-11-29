@@ -14,7 +14,7 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     margin:0 auto;
-    margin-top: 7rem;
+    margin-top: 8rem;
     width: 47.25rem;
     height: 46.875rem;
     flex-shrink: 0;
