@@ -14,7 +14,7 @@ margin-top: 2rem;
 const GlobalBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -35,7 +35,7 @@ margin: 0 auto;
 const MusicBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -56,7 +56,7 @@ margin: 0 auto;
 const ChristianBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -77,7 +77,7 @@ margin: 0 auto;
 const ContentBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -99,10 +99,10 @@ margin: 0 auto;
 function MajorGlobalClick() {
     return (
         <GlobalContainer>
-            <GlobalBtn><Link to={'/field/major/글로벌문화학부/page/1'} style={{ textDecoration: "none"}}>글로벌학부</Link></GlobalBtn>
-            <MusicBtn><Link to={'/field/major/음악학과/page/1'} style={{ textDecoration: "none"}}>음악학과</Link></MusicBtn>
-            <ChristianBtn><Link to={'/field/major/기독교학과/page/1'} style={{ textDecoration: "none"}}>기독교학과</Link></ChristianBtn>
-            <ContentBtn><Link to={'/field/major/글로벌문화학부/page/1'} style={{ textDecoration: "none"}}>한영문화콘텐츠학과</Link></ContentBtn>
+            <Link to={'/field/major/글로벌문화학부/page/1'} style={{ textDecoration: "none"}}><GlobalBtn>글로벌학부</GlobalBtn></Link>
+            <Link to={'/field/major/음악학과/page/1'} style={{ textDecoration: "none"}}><MusicBtn>음악학과</MusicBtn></Link>
+            <Link to={'/field/major/기독교학과/page/1'} style={{ textDecoration: "none"}}><ChristianBtn>기독교학과</ChristianBtn></Link>
+            <Link to={'/field/major/글로벌문화학부/page/1'} style={{ textDecoration: "none"}}><ContentBtn>한영문화콘텐츠학과</ContentBtn></Link>
         </GlobalContainer>
            
     );

@@ -14,7 +14,7 @@ margin-top: 2rem;
 const SocietyBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -35,7 +35,7 @@ margin: 0 auto;
 const WelfareBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -56,7 +56,7 @@ margin: 0 auto;
 const SilverBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -79,9 +79,9 @@ margin: 0 auto;
 function MajorWelfareClick() {
     return (
         <WelfareContainer>
-            <SocietyBtn><Link to={'/field/major/사회복지학부/page/1'} style={{ textDecoration: "none"}}>사회복지학부</Link></SocietyBtn>
-            <WelfareBtn><Link to={'/field/major/스포츠복지전공/page/1'} style={{ textDecoration: "none"}}>스포츠복지전공</Link></WelfareBtn>
-            <SilverBtn><Link to={'/field/major/실버산업학과/page/1'} style={{ textDecoration: "none"}}>실버산업학과</Link></SilverBtn>
+            <Link to={'/field/major/사회복지학부/page/1'} style={{ textDecoration: "none"}}><SocietyBtn>사회복지학부</SocietyBtn></Link>
+            <Link to={'/field/major/스포츠복지전공/page/1'} style={{ textDecoration: "none"}}><WelfareBtn>스포츠복지전공</WelfareBtn></Link>
+            <Link to={'/field/major/실버산업학과/page/1'} style={{ textDecoration: "none"}}><SilverBtn>실버산업학과</SilverBtn></Link>
         </WelfareContainer>
            
     );

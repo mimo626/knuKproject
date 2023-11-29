@@ -14,7 +14,7 @@ margin-top: 2rem;
 const ICTBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -35,7 +35,7 @@ margin: 0 auto;
 const AIBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -56,7 +56,7 @@ margin: 0 auto;
 const ContructBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -79,9 +79,9 @@ margin: 0 auto;
 function MajorEngineerClick() {
     return (
         <EngineerContainer>
-            <ICTBtn><Link to={'/field/major/ICT융합공학부/page/1'} style={{ textDecoration: "none"}}>ICT융합공학부</Link></ICTBtn>
-            <AIBtn><Link to={'/field/major/인공지능융합공학부/page/1'} style={{ textDecoration: "none"}}>인공지능융합공학부</Link></AIBtn>
-            <ContructBtn><Link to={'/field/major/부동산건설학부/page/1'} style={{ textDecoration: "none"}}>부동산건설학부</Link></ContructBtn>
+            <Link to={'/field/major/ICT융합공학부/page/1'} style={{ textDecoration: "none"}}><ICTBtn>ICT융합공학부</ICTBtn></Link>
+            <Link to={'/field/major/인공지능융합공학부/page/1'} style={{ textDecoration: "none"}}><AIBtn>인공지능융합공학부</AIBtn></Link>
+            <Link to={'/field/major/부동산건설학부/page/1'} style={{ textDecoration: "none"}}><ContructBtn>부동산건설학부</ContructBtn></Link>
         </EngineerContainer>
            
     );

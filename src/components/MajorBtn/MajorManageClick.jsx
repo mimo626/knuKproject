@@ -14,7 +14,7 @@ margin-top: 2rem;
 const ManageBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -35,7 +35,7 @@ margin: 0 auto;
 const PublicBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -56,7 +56,7 @@ margin: 0 auto;
 const EconomyBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -77,7 +77,7 @@ margin: 0 auto;
 const FreeBtn = styled.div`
 display: flex;
 width: 100%;
-height: 25%;
+height: 5.25rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -99,10 +99,10 @@ margin: 0 auto;
 function MajorManageClick() {
     return (
         <ManageContainer>
-            <ManageBtn><Link to={'/field/major/글로벌경영학부/page/1'} style={{ textDecoration: "none"}}>글로벌경영학부</Link></ManageBtn>
-            <PublicBtn><Link to={'/field/major/정경학부/page/1'} style={{ textDecoration: "none"}}>공공인재학과</Link></PublicBtn>
-            <EconomyBtn><Link to={'/field/major/정경학부/page/1'} style={{ textDecoration: "none"}}>경제세무학과</Link></EconomyBtn>
-            <FreeBtn><Link to={'/field/major/융합자유전공학부/page/1'} style={{ textDecoration: "none"}}>융합자유전공학부</Link></FreeBtn>
+            <Link to={'/field/major/글로벌경영학부/page/1'} style={{ textDecoration: "none"}}><ManageBtn>글로벌경영학부</ManageBtn></Link>
+            <Link to={'/field/major/정경학부/page/1'} style={{ textDecoration: "none"}}><PublicBtn>공공인재학과</PublicBtn></Link>
+            <Link to={'/field/major/정경학부/page/1'} style={{ textDecoration: "none"}}><EconomyBtn>경제세무학과</EconomyBtn></Link>
+            <Link to={'/field/major/융합자유전공학부/page/1'} style={{ textDecoration: "none"}}><FreeBtn>융합자유전공학부</FreeBtn></Link>
         </ManageContainer>
            
     );
