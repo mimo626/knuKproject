@@ -14,7 +14,7 @@ margin-top: 2rem;
 const EduBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -35,7 +35,7 @@ margin: 0 auto;
 const ChildBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -56,7 +56,7 @@ margin: 0 auto;
 const SpecialBtn = styled.div`
 display: flex;
 width: 100%;
-height: 33.3%;
+height: 7rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
@@ -79,9 +79,9 @@ margin: 0 auto;
 function MajorEduClick() {
     return (
         <EduContainer>
-            <EduBtn>교육학과</EduBtn>
-            <ChildBtn>유아교육학과</ChildBtn>
-            <SpecialBtn>특수교육학과</SpecialBtn>
+            <Link to={'/major/type/교육학과'} style={{ textDecoration: "none"}}><EduBtn>교육학과</EduBtn></Link>
+            <Link to={'/major/type/유아교육학과'} style={{ textDecoration: "none"}}><ChildBtn>유아교육학과</ChildBtn></Link>
+            <Link to={'/major/type/특수교육학과'} style={{ textDecoration: "none"}}><SpecialBtn>특수교육학과</SpecialBtn></Link>
         </EduContainer>
            
     );
