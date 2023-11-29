@@ -56,6 +56,7 @@ function FieldMajor() {
               <td>{item.view}</td>
               <td>{item.likeCount}</td>
               
+              
             </tr>
           ))}
         </tbody>

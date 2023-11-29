@@ -43,6 +43,7 @@ import React, { useState } from 'react';
           </label>
           <button onClick={sendMail}>인증번호 발송</button>
     
+    
           <label>
             인증번호:
             <input type="text" value={enteredNumber} onChange={(e) => setEnteredNumber(e.target.value)} />
