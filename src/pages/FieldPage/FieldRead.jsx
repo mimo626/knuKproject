@@ -3,24 +3,23 @@ import { createContext, useEffect, useState } from "react";
 import { json, Link, useParams } from "react-router-dom";
 
 function FieldRead() {
-
-    const [notice, setNotice] = useState([]);
+    const [data, setData] = useState([]);
     const { noticeId } = useParams();
-
+  
     useEffect(() => {
-        const url = "http://localhost:8080/main/read/" + noticeId;
-        console.log(url);
-        // axios.get("http://localhost:3000/data/mock.json")
-        axios.get(url)
-            .then(res => {
-                console.log(res.data.body);;
-                setNotice(res.data.body);
-            })
-            .catch(error => {
-                console.log(error.response.data)
-            })
-
-    }, [])
+      const fetchData = async () => {
+        try {
+          const response = await axios.post('http://localhost:8080/notice/requestbody', {
+            dbid: noticeId
+          });
+          setData(response.data);
+        } catch (error) {
+          console.error('에러가 발생했습니다:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
 
     return (
         <div>
@@ -42,20 +41,20 @@ function FieldRead() {
 
                 <tbody>
                     <tr>
-                        <td>{notice.boardId}</td>
-                        <td>{notice.title}</td>
-                        <td>{notice.major}</td>
-                        <td>{notice.type}</td>
-                        <td>{notice.writer}</td>
-                        <td>{notice.regdate}</td>
-                        <td>{notice.view}</td>
-                        <td>{notice.likeCount}</td>
-                        <td>{notice.body}</td>
-                        <td>{notice.img}</td>
+                        <td>{data.boardId}</td>
+                        <td>{data.title}</td>
+                        <td>{data.major}</td>
+                        <td>{data.type}</td>
+                        <td>{data.writer}</td>
+                        <td>{data.regdate}</td>
+                        <td>{data.view}</td>
+                        <td>{data.likeCount}</td>
+                        <td>{data.body}</td>
+                        <td>{data.img}</td>
                     </tr>
                 </tbody>
             </table>
-            {notice.comments && notice.comments.map(item => (
+            {data.comments && data.comments.map(item => (
                 <table key={item.id}>
                     <thead>
                         <tr>

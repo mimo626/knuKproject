@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import KnuLogo from './knuLogo.png';
 import LoginBtn from "../components/LoginBtn";
 import { Link } from "react-router-dom";
 import SearchBtn from "../components/SearchBtn";
@@ -14,7 +13,6 @@ const Container = styled.div`
     height: 8rem;
     position: fixed;
     top: 0;
-    overflow: hidden;
 `;
 const Content = styled.ul`
     display: flex;
@@ -25,11 +23,17 @@ const Content = styled.ul`
     margin: 0 auto;
     list-style-type: none;
 `;
-const Image = styled.img`
-    width: 5rem;
-    height: 5rem;
-    margin-right: 8rem;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
 `;
+
+const imageStyle = {
+    width: "5rem",
+    height: "5rem",
+    marginRight: "8rem"
+};
+
 const HeaderWrapper = styled.ul`
     display: flex;
     flex-direction: row;
@@ -56,8 +60,6 @@ const HeaderWrapperList = styled.li`
         color: #fff;
     }
     &:hover {
-        font-size: 1.4rem;
-        transition: all 0.3s;
         cursor: pointer;
     }
 `;
@@ -110,22 +112,58 @@ const SideWrapperList = styled.li`
     }
 `;
 
+const MenuWrapper = styled.div`
+    display: block;
+    margin: 0 auto;
+`;
+
+const StyledDiv = styled.div`
+    display: ${props => props.display};
+    z-index: 999;
+    background-color: #fff;
+    padding: 10px;
+    & > li {
+        padding: 0.2rem;
+        list-style-type: none;
+        text-align: center;
+    }
+`
+
 function Header() {
-    const [search, setSearch] = useState(true)
+    const [search, setSearch] = useState(true);
+    const [display, setDisplay] = useState("none");
 
     return (
-        <>
         <Container>
             <Content>
-            <Link to={'/main'} style={{ textDecoration: "none"}}><Image src={KnuLogo} alt='강남대 로고'></Image></Link>
+                <StyledLink to={'/main'}>
+                    <img style={imageStyle} src="img/knuLogo.png" alt="강남대 로고" />
+                </StyledLink>
+                {/* 라우팅 충돌, 드롭다운 기능 */}
                 <HeaderWrapper>
-                    <Link to={'/intro'} style={{ textDecoration: "none"}}><HeaderWrapperList>소개</HeaderWrapperList></Link>
-                    <Link to={'/notice'} style={{ textDecoration: "none"}}><HeaderWrapperList>공지사항</HeaderWrapperList></Link>
-                    <HeaderWrapperList><a>프로그램</a></HeaderWrapperList>
-                    <HeaderWrapperList><a>교내 정보</a></HeaderWrapperList>
+                    <MenuWrapper>
+                        <HeaderWrapperList
+                            onMouseOver={() => {
+                                setDisplay("block");
+                                console.log(display);
+                            }}
+                            onMouseOut={() => {
+                                setDisplay("none");
+                                console.log(display);
+                            }}>소개</HeaderWrapperList>
+                        <StyledDiv display={"none"}>
+                            <li>menu1</li>
+                            <li>menu2</li>
+                            <li>menu3</li>
+                        </StyledDiv>
+                    </MenuWrapper>
+                    <HeaderWrapperList>공지사항</HeaderWrapperList>
+                    <HeaderWrapperList>프로그램</HeaderWrapperList>
+                    <HeaderWrapperList>교내 정보</HeaderWrapperList>
                 </HeaderWrapper>
                 <SideWrapper>
                     <SearchWrapper>
+                        {/* 최적화 가능한 로직 */}
                         <SearchBtn switch={setSearch}></SearchBtn>
                         <SearchLine></SearchLine>
                         {
@@ -134,14 +172,11 @@ function Header() {
                         : <SearchClick></SearchClick>
                         }
                     </SearchWrapper>
-                    <Link to={'/my'} style={{ textDecoration: "none"}}><SideWrapperList>My</SideWrapperList></Link>
-                    <SideWrapperList><LoginBtn></LoginBtn></SideWrapperList>
+                    <StyledLink to={'/my'}><SideWrapperList>My</SideWrapperList></StyledLink>
+                    <SideWrapperList><LoginBtn /></SideWrapperList>
                 </SideWrapper>
             </Content>
         </Container>
-        
-        </>
-
     );
 }
 

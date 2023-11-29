@@ -87,10 +87,10 @@ font-weight: 700;
 function Main() {
     return (
         <FieldWrapper>
-            <Link to={'/field/major/ICT융합공학부'} style={{ textDecoration: "none"}}><FieldUniv >ICT융합공학부</FieldUniv></Link>
-            <Link to={'/field/type/취창업'} style={{ textDecoration: "none"}}><FieldJob>취창업</FieldJob></Link>
-            <Link to={'/field/type/학습%2F상담'} style={{ textDecoration: "none"}}><FieldStudy>학습/상담</FieldStudy></Link>
-            <Link to={'/field/major/행사%2F안내'} style={{ textDecoration: "none"}}><FieldNotice>행사/안내</FieldNotice></Link>
+            <Link to={'/field/major/ICT융합공학부/page/1'} style={{ textDecoration: "none"}}><FieldUniv >ICT융합공학부</FieldUniv></Link>
+            <Link to={'/field/type/취창업/page/1'} style={{ textDecoration: "none"}}><FieldJob>취창업</FieldJob></Link>
+            <Link to={'/field/type/학습%2F상담/page/1'} style={{ textDecoration: "none"}}><FieldStudy>학습/상담</FieldStudy></Link>
+            <Link to={'/field/major/행사%2F안내/page/1'} style={{ textDecoration: "none"}}><FieldNotice>행사/안내</FieldNotice></Link>
         </FieldWrapper>
     );
 }

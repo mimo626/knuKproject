@@ -79,9 +79,9 @@ margin: 0 auto;
 function MajorEngineerClick() {
     return (
         <EngineerContainer>
-            <ICTBtn>ICT융합공학부</ICTBtn>
-            <AIBtn>인공지능융합공학부</AIBtn>
-            <ContructBtn>부동산건설학부</ContructBtn>
+            <ICTBtn><Link to={'/field/major/ICT융합공학부/page/1'} style={{ textDecoration: "none"}}>ICT융합공학부</Link></ICTBtn>
+            <AIBtn><Link to={'/field/major/인공지능융합공학부/page/1'} style={{ textDecoration: "none"}}>인공지능융합공학부</Link></AIBtn>
+            <ContructBtn><Link to={'/field/major/부동산건설학부/page/1'} style={{ textDecoration: "none"}}>부동산건설학부</Link></ContructBtn>
         </EngineerContainer>
            
     );

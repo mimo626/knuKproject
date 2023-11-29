@@ -79,9 +79,9 @@ margin: 0 auto;
 function MajorWelfareClick() {
     return (
         <WelfareContainer>
-            <SocietyBtn>사회복지학부</SocietyBtn>
-            <WelfareBtn>복지융합인재학부</WelfareBtn>
-            <SilverBtn>실버산업학과</SilverBtn>
+            <SocietyBtn><Link to={'/field/major/사회복지학부/page/1'} style={{ textDecoration: "none"}}>사회복지학부</Link></SocietyBtn>
+            <WelfareBtn><Link to={'/field/major/스포츠복지전공/page/1'} style={{ textDecoration: "none"}}>스포츠복지전공</Link></WelfareBtn>
+            <SilverBtn><Link to={'/field/major/실버산업학과/page/1'} style={{ textDecoration: "none"}}>실버산업학과</Link></SilverBtn>
         </WelfareContainer>
            
     );
