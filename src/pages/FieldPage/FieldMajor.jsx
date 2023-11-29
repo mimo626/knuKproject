@@ -11,7 +11,7 @@ function FieldMajor() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:8080/notice/requestPage', {
+        const response = await axios.post('/notice/requestPage', {
           major: major,
           type: '',
           keyword: '',

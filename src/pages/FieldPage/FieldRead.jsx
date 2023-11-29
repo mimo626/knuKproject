@@ -9,7 +9,7 @@ function FieldRead() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.post('http://localhost:8080/notice/requestbody', {
+          const response = await axios.post('/notice/requestbody', {
             dbid: noticeId
           });
           setData(response.data);
