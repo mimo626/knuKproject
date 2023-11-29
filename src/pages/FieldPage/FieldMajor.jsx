@@ -42,7 +42,6 @@ function FieldMajor() {
             <th>Regdate</th>
             <th>View</th>
             <th>LikeCount</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -56,11 +55,7 @@ function FieldMajor() {
               <td>{item.regdate}</td>
               <td>{item.view}</td>
               <td>{item.likeCount}</td>
-              <td>
-                <button onClick={() => postClickLike(item.dbid)}>
-                  {item.checkLike ? '좋아요 취소' : '좋아요'}
-                </button>
-              </td>
+              
             </tr>
           ))}
         </tbody>
