@@ -5,6 +5,7 @@ import poster2 from '../../components/poster2.png';
 import poster3 from '../../components/poster3.png';
 import { IoIosHeart } from "react-icons/io";
 import { BsChatSquareTextFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Page = styled.div`
     width:100%;
@@ -229,7 +230,7 @@ function My(){
                     <MyInfromWrapper>
                         <MyEmail>닉네임: y***@gmail.com</MyEmail>
                         <EmailBtnContainer>
-                            <EmailBtn>강남대 이메일인증</EmailBtn>
+                        <Link to={'/knuLogin'} style={{ textDecoration: "none" }}><EmailBtn>강남대 이메일인증</EmailBtn></Link>
                         </EmailBtnContainer>
                     </MyInfromWrapper>
                 </MyContent>

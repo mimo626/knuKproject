@@ -60,6 +60,8 @@ const HeaderWrapperList = styled.li`
         color: #fff;
     }
     &:hover {
+        font-weight: 600;
+        transition: all 0.3s;
         cursor: pointer;
     }
 `;
@@ -142,7 +144,7 @@ function Header() {
                 {/* 라우팅 충돌, 드롭다운 기능 */}
                 <HeaderWrapper>
                     <MenuWrapper>
-                        <HeaderWrapperList
+                    <Link to={'/intro'} style={{ textDecoration: "none"}}><HeaderWrapperList
                             onMouseOver={() => {
                                 setDisplay("block");
                                 console.log(display);
@@ -150,14 +152,14 @@ function Header() {
                             onMouseOut={() => {
                                 setDisplay("none");
                                 console.log(display);
-                            }}>소개</HeaderWrapperList>
+                            }}>소개</HeaderWrapperList></Link>
                         <StyledDiv display={"none"}>
                             <li>menu1</li>
                             <li>menu2</li>
                             <li>menu3</li>
                         </StyledDiv>
                     </MenuWrapper>
-                    <HeaderWrapperList>공지사항</HeaderWrapperList>
+                    <Link to={'/notice'} style={{ textDecoration: "none"}}><HeaderWrapperList>공지사항</HeaderWrapperList></Link>
                     <HeaderWrapperList>프로그램</HeaderWrapperList>
                     <HeaderWrapperList>교내 정보</HeaderWrapperList>
                 </HeaderWrapper>

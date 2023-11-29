@@ -5,18 +5,11 @@ import Main from './pages/Main';
 import Notice from './pages/HeaderPage/Notice';
 import My from './pages/HeaderPage/My';
 import Intro from './pages/HeaderPage/Intro';
-import Login from './pages/HeaderPage/Login';
-
+import KnuLogin from './pages/HeaderPage/KnuLogin';
 import MajorType from './pages/MajorPage/MajorType';
-
 import FieldMajor from './pages/FieldPage/FieldMajor';
 import FieldType from './pages/FieldPage/FieldType';
 import FieldRead from './pages/FieldPage/FieldRead';
-
-
-
-
-
 
 function App() {
   return (
@@ -27,7 +20,7 @@ function App() {
       <Route path='/intro' element={<Intro/>}></Route>
       <Route path='/notice' element={<Notice/>}></Route>
       <Route path='/my' element={<My/>}></Route>
-      <Route path='/login' element={<Login/>}></Route>
+      <Route path='/knuLogin' element={<KnuLogin/>}></Route>
       <Route path="/major/type/:type?" element={<MajorType/>}></Route>
 
       <Route path="/field/type/:type?" element={<FieldType/>}></Route>
