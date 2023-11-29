@@ -1,8 +1,110 @@
 import Header from "../../components/Header";
+import styled from "styled-components";
 
+const Page = styled.div`
+    width:100%;
+    margin-top: 8rem;
+`;
+
+const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin:0 auto;
+    margin-top: 7rem;
+    width: 47.25rem;
+    height: 46.875rem;
+    flex-shrink: 0;
+    border-radius: 3.125rem;
+    background: #E8F9FA;
+    box-shadow: 4px 4px 4px 0px rgba(79, 79, 79, 0.25);
+`;
+const TextWrapper = styled.div`
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1875rem;
+    margin: 0 auto;
+    padding-top: 5rem;
+`;
+const LoginTitle = styled.div`
+    color: black;
+    font-family: Inter;
+    font-size: 2.1875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; 
+`;
+const LoginComment = styled.div`
+    color: #7D7D7D;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+`;
+const TextWrapper2 = styled.div`
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3.25rem;
+    margin:0 auto;
+    width: 80%;
+`;
+const EmailWrapper = styled.div`
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 3.25rem;
+    margin:0 auto;
+    
+`;
+const KnuEmail= styled.div`
+    color: #AFAFAF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+`;
+const EmailBtn = styled.div`
+    display: flex;
+    width: 7.5rem;
+    height: 2.5rem;
+    padding: 0.75rem 2.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+`;
+const EmailText = styled.div`
+    color: var(--knu, #006CBF);
+    text-align: center;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%
+`;
 function Login(){
     return(
-        <Header></Header>
+        <Page>
+            <Header></Header>
+            <Content>
+                <TextWrapper>
+                    <LoginTitle>강남대학교 학생 인증</LoginTitle>
+                    <LoginComment>인증을 통해 더 많은 기능을 이용해보세요!</LoginComment>
+                </TextWrapper>  
+                <TextWrapper2>
+                    <EmailWrapper>
+                        <KnuEmail>강남대 이메일 <span style={{fontSize:" 1.25rem"}}>ex) 202104126@kangnam.ac.kr</span></KnuEmail>
+                        <EmailBtn>
+                            <EmailText>인증번호 발송</EmailText>
+                        </EmailBtn>
+                    </EmailWrapper>
+                </TextWrapper2>
+            </Content>
+        </Page>
     );
     }
     export default Login; 
