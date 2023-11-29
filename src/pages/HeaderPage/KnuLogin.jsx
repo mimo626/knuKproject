@@ -95,7 +95,7 @@ function Login(){
 
   const sendMail = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/mail/send?mail='+email, {
+      const response = await axios.post('/mail/send?mail='+email, {
         mail: email,
       });
 
@@ -107,7 +107,7 @@ function Login(){
 
   const confirmNumber = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/mail/confirmNumber?enteredNumber='+enteredNumber, {
+      const response = await axios.post('/mail/confirmNumber?enteredNumber='+enteredNumber, {
        enteredNumber: enteredNumber,
       });
 
