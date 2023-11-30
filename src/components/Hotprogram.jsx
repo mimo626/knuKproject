@@ -192,9 +192,7 @@ const Main = () => {
                             <ProgramLikeWrapper>
                                 <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
                                 <LikeCount>{item.likeCount}</LikeCount>
-                            </ProgramLikeWrapper>
-<<<<<<< HEAD
-                            
+                            </ProgramLikeWrapper>                            
                         <ProgramComment>
                         <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
                         {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
@@ -223,12 +221,10 @@ const Main = () => {
                         <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
                         {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
                         </ProgramComment>
-=======
                             <ProgramComment>
                                 <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
                                 <TextCount>{item.commentCount}</TextCount>
                             </ProgramComment>*
->>>>>>> 452818e0f3894c3931fa2f3602f09268f07e8ff0
                         </ProgramLCWrapper>
                         <ProgramTitleWrapper>{item.title}</ProgramTitleWrapper>
                     </ProgramContainer>
