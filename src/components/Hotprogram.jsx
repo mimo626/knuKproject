@@ -216,7 +216,6 @@ const Main = () => {
                                 <IoIosHeart style={{ paddingLeft: 12, paddingTop: 1.3 }} size={35} />
                                 <LikeCount>{item.likeCount}</LikeCount>
                             </ProgramLikeWrapper>
-                            
                         <ProgramComment>
                         <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
                         {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
