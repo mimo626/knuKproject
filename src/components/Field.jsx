@@ -103,7 +103,7 @@ function Main() {
 
     return (
         <FieldWrapper>
-            <Link to={'/field/major/'+ department +'/page/1'} style={{ textDecoration: "none"}}><FieldUniv >{department === undefined ? "학부/선택" : department}</FieldUniv></Link>
+            <Link to={department === undefined ?  '/' : '/field/major/'+ department +'/page/1'} style={{ textDecoration: "none"}}><FieldUniv >{department === undefined ? "학부/선택" : department}</FieldUniv></Link>
             <Link to={'/field/type/취창업/page/1'} style={{ textDecoration: "none"}}><FieldJob>취창업</FieldJob></Link>
             <Link to={'/field/type/학습%2F상담/page/1'} style={{ textDecoration: "none"}}><FieldStudy>학습/상담</FieldStudy></Link>
             <Link to={'/field/major/행사%2F안내/page/1'} style={{ textDecoration: "none"}}><FieldNotice>행사/안내</FieldNotice></Link>
