@@ -8,7 +8,6 @@ import { IoIosHeart } from "react-icons/io";
 import { BsChatSquareTextFill } from "react-icons/bs";
 
 const Page = styled.div`
-    height: 55rem;
     width:100%;
     background-color: #ADC9F7;
     padding-bottom:8rem;
@@ -174,7 +173,7 @@ function Main(props) {
         <Page>
             <TextWrapper>
                 <TextHot>Hot Program</TextHot>
-                <TextInform>인기 있는 비교과 프로그램을 확인해보세요!</TextInform>
+                <TextInform>인기 좋아요 공지사항</TextInform>
             </TextWrapper>
             <ProgramWrapper>
                 {topLikes.map((item, index) => (
@@ -189,11 +188,35 @@ function Main(props) {
                                 <IoIosHeart style={{ paddingLeft: 12, paddingTop: 1.3 }} size={35} />
                                 <LikeCount>{item.likeCount}</LikeCount>
                             </ProgramLikeWrapper>
-                            {/*댓글 어떻게 할 것인지
+                            
                         <ProgramComment>
                         <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                        <TextCount>{item.댓글갯수변수명}</TextCount>
-                        </ProgramComment>*/}
+                        {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
+                        </ProgramComment>
+                        </ProgramLCWrapper>
+                        <ProgramTitleWrapper>{item.title}</ProgramTitleWrapper>
+                    </ProgramContainer>
+                ))}
+            </ProgramWrapper>
+            <TextInform>인기 조회수 공지사항</TextInform>
+            <ProgramWrapper>
+                {topLikes.map((item, index) => (
+                    <ProgramContainer key={index}>
+                        {item.images && item.images.length > 0 && (
+                            <ProgramImgWrapper>
+                                <ProgramImg src={item.images[0]} alt={`포스터 ${index + 1}`} />
+                            </ProgramImgWrapper>
+                        )}
+                        <ProgramLCWrapper>
+                            <ProgramLikeWrapper>
+                                <IoIosHeart style={{ paddingLeft: 12, paddingTop: 1.3 }} size={35} />
+                                <LikeCount>{item.likeCount}</LikeCount>
+                            </ProgramLikeWrapper>
+                            
+                        <ProgramComment>
+                        <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
+                        {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
+                        </ProgramComment>
                         </ProgramLCWrapper>
                         <ProgramTitleWrapper>{item.title}</ProgramTitleWrapper>
                     </ProgramContainer>

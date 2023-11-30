@@ -5,6 +5,7 @@ import MainCategory from "../components/MainCategory";
 import MainSearch from "../components/MainSearch";
 import Hotprogram from "../components/Hotprogram";
 import MainProvider from "../services/MainProvider";
+import Footer from "../components/Footer";
 
 const Container = styled.div`
     width: 100%;
@@ -21,6 +22,7 @@ function Main() {
                 <MainSearch />
                 <MainCategory />
                 <Hotprogram />
+                <Footer/>
             </Container>
         </MainProvider>
     );

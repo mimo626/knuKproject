@@ -79,7 +79,7 @@ const KnuEmail= styled.div`
     font-weight: 600;
     line-height: 100%;
 `;
-const EmailInput = styled.input`
+const Input = styled.input`
     display: flex;
     width: 25rem;
     height: 2.5rem;
@@ -142,9 +142,11 @@ function Login(){
 
   const sendMail = async () => {
     try {
+      
       const response = await axios.post('/mail/send?mail='+email, {
         mail: email,
       });
+      alert("인증번호 발송 완료.");
 
       setMessage(response.data);
     } catch (error) {
@@ -157,6 +159,7 @@ function Login(){
       const response = await axios.post('/mail/confirmNumber?enteredNumber='+enteredNumber, {
        enteredNumber: enteredNumber,
       });
+      alert("인증 완료");
 
       setMessage(response.data);
     } catch (error) {
@@ -178,21 +181,21 @@ function Login(){
                 <TextWrapper2>
                     <KnuEmail>강남대 이메일</KnuEmail>
                     <EmailWrapper>
-                        <EmailInput placeholder="ex) 202104126@kangnam.ac.kr" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Input placeholder="ex) 202104126@kangnam.ac.kr" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <EmailBtn onClick={sendMail}>인증번호 발송</EmailBtn>
                     </EmailWrapper>
                 </TextWrapper2>
                 <TextWrapper2>
                     <KnuEmail>인증 번호</KnuEmail>
                     <EmailWrapper>
-                        <EmailInput  type="email" value={enteredNumber} onChange={(e) => setEmail(e.target.value)} />
+                        <Input  type="text" value={enteredNumber} onChange={(e) => setEnteredNumber(e.target.value)} />
                         <EmailBtn onClick={confirmNumber}>이메일 인증</EmailBtn>
                     </EmailWrapper>
                 </TextWrapper2>
                 <TextWrapper2>
                     <KnuEmail>본인의 학과</KnuEmail>
                     <EmailWrapper>
-                        <EmailInput  type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Input  />
                     </EmailWrapper>
                 </TextWrapper2>
                 <Link to={'/main'} style={{ textDecoration: "none"}}><MainBtn>인증 완료</MainBtn></Link>
