@@ -8,16 +8,11 @@ import { IoIosHeart } from "react-icons/io";
 import { BsChatSquareTextFill } from "react-icons/bs";
 
 const Page = styled.div`
-<<<<<<< HEAD
     width:100%;
     background-color: #ADC9F7;
     padding-bottom:8rem;
-=======
-  height: 55rem;
-  width:100%;
-  background-color: #ADC9F7;
-  padding-bottom:8rem;
->>>>>>> 452818e0f3894c3931fa2f3602f09268f07e8ff0
+    height: 55rem;
+
 `;
 const TextWrapper = styled.div`
   display: flex;

@@ -1,7 +1,105 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { json, Link, useParams } from "react-router-dom";
+import styled from "styled-components";
+import Header from "../../components/Header";
+import { IoIosHeart } from "react-icons/io";
+import { IoEye } from "react-icons/io5";
 
+const Page = styled.div`
+    width:100%;
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    background: #E9F9FA;
+    padding-top: 3rem;
+
+`;
+const MajorTitle = styled.div`
+    font-family: Inter;
+    font-size: 2.1875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; 
+    margin: 0 auto;
+    padding-bottom: 2rem;
+
+`;
+const Line = styled.div`
+    width: 75rem;
+    height: 0.15rem;
+    background-color: black;
+    flex-shrink: 0;
+    margin: 0 auto;
+`;
+const ContentWrapper = styled.div`
+  display: flex;
+  width: 75rem;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 4rem 9rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding-top:5rem;
+  padding-bottom:5rem;
+`;
+
+const Content= styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 33rem;
+  height: 23rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: #FFF;
+  margin: 0 auto;
+  box-shadow: 0px 4px 4px 0px #B4B4B4;
+  gap: 0.5rem;
+
+`;
+
+const ImgWrapper= styled.img`
+  width: 45%;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: blue;
+  margin: 0 auto;
+  gap: 0.5rem;
+  margin: 0.5rem 0.5rem;
+`;
+const TableWrapper= styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  flex-shrink: 0;
+  margin: 0 auto;
+  word-break:keep-all;  
+`;
+const Title= styled.table`
+  height: 4rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding-right:1.2rem;
+  margin-top:0.5rem;
+  margin-bottom:0.5rem;
+
+
+`;
+const Wrapper= styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top:0.5rem;
+  margin-bottom:0.5rem;
+`;
+const T= styled.table`
+  font-size: 1.1rem;
+  font-weight: 500;
+  word-break:break-word;
+  padding-right:1.2rem;
+  text-decoration: none;
+  color:gray;
+
+`;
 
 function FieldType() {
   const [data, setData] = useState([]);
@@ -16,7 +114,7 @@ function FieldType() {
           type: type,
           keyword: '',
           page: page,
-          perPage: 20,
+          perPage: 6,
         });
 
         setData(response.data.data);
@@ -29,37 +127,32 @@ function FieldType() {
   }, []);
 
   return (
-    <div>
-      {/* 데이터를 사용하여 테이블 및 페이지 버튼 렌더링 */}
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Major</th>
-            <th>Type</th>
-            <th>Writer</th>
-            <th>Regdate</th>
-            <th>View</th>
-            <th>LikeCount</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(item => (
-            <tr key={item.dbid}>
-              <td>{item.dbid}</td>
-              <td><Link to={'/field/read/' + item.dbid} style={{ textDecoration: "none" }}>{item.title}</Link></td>
-              <td>{item.major}</td>
-              <td>{item.type}</td>
-              <td>{item.writer}</td>
-              <td>{item.regdate}</td>
-              <td>{item.view}</td>
-              <td>{item.likeCount}</td>
-            </tr>
+    <Page>
+      <Header />
+      {data.length > 0 && <MajorTitle>{data[0].major}</MajorTitle>}
+      <Line />
+      <div>
+        {/* 데이터를 사용하여 테이블 및 페이지 버튼 렌더링 */}
+        <ContentWrapper>
+        {data.map(item => (
+          <Link to={'/field/read/' + item.dbid} style={{textDecoration: "none" }}><Content>
+            <ImgWrapper src={item.img}></ImgWrapper>
+            <TableWrapper>
+              <Title style={{color:'black'}}>{item.title}</Title>
+              <T>작성자: {item.writer}</T>
+                <Wrapper>
+                  <IoIosHeart style={{color:'#FE4D82', paddingRight:3}} size={35}></IoIosHeart>
+                  <T style={{ paddingTop:2, color:'#FE4D82'}}>{item.likeCount}</T>
+                  <IoEye style={{ color: '#006CBF', paddingRight:3}} size={35}></IoEye>
+                  <T style={{ paddingTop:3, color: '#006CBF'}}>{item.view}</T>
+                </Wrapper>
+                <T>{item.regdate}</T>
+            </TableWrapper>
+          </Content></Link>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </ContentWrapper>
+      </div>
+    </Page>    
   );
 }
 
