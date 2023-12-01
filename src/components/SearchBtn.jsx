@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { IoMdSearch } from "react-icons/io";
+import axios, { AxiosError } from "axios";
 
 const Content = styled.div`
     width:12rem;
@@ -27,10 +28,29 @@ const SearchText = styled.div`
 function SearchBtn(propsSearch) {
     return (
         <Content>
-            <SearchInput onClick={() => propsSearch.switch(false)}></SearchInput>
-            <SearchText><IoMdSearch></IoMdSearch></SearchText>
+            <SearchInput onClick={() => propsSearch.switch(false)}><input type="text" id="keyWord"></input></SearchInput>
+            <SearchText><IoMdSearch onClick={() => {
+                try {
+                    axios.post('/keyword/add/rankingRecord', {
+                        keyword: document.getElementById("keyWord").value
+                    });
+                } catch (error) {
+                    alert(error)
+                    console.error('에러가 발생했습니다:', error);
+                }
+
+                try {
+                    axios.post('/keyword/add/recentRecord', {
+                        keyword: document.getElementById("keyWord").value
+                    });
+                } catch (error) {
+                    alert(error)
+                    console.error('에러가 발생했습니다:', error);
+                }
+                location.reload();
+            }}></IoMdSearch></SearchText>
         </Content>
-        
+
     );
 }
 

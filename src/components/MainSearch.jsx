@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import axios, { AxiosError } from "axios";
+import { createContext, useEffect, useState } from "react";
+import { json, Link, redirect, useParams } from "react-router-dom";
 
 
 const Page = styled.div`
@@ -61,20 +64,35 @@ const RankList2 = styled.div`
 
 `;
 function MainSearch() {
+
+    const [keywordRanking, setKeywordRanking] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.post('/keyword/request/rankingRecord', {
+                });
+                setKeywordRanking(response.data);
+            } catch (error) {
+                console.error('에러가 발생했습니다:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
     return (
         <Page>
             <Content>
                 실시간 인기 검색어
-            <RankWrapper1>
-                <RankNum>1</RankNum><RankList1>학습공동체</RankList1>
-                <RankNum>2</RankNum><RankList1> 학습공동체</RankList1>
-                <RankNum>3</RankNum><RankList1> 학습공동체</RankList1>
-            </RankWrapper1>
-            <RankWrapper2>
-                <RankNum>4</RankNum><RankList2> 학습공동체</RankList2>
-                <RankNum>5</RankNum><RankList2> 학습공동체</RankList2>
-                <RankNum>6</RankNum><RankList2> 학습공동체</RankList2>
-            </RankWrapper2>
+                <RankWrapper1>
+                    <RankNum>1</RankNum><RankList1>{keywordRanking[0] === undefined ? "데이터 없음" : keywordRanking[0].keyword}</RankList1>
+                    <RankNum>2</RankNum><RankList1>{keywordRanking[1] === undefined ? "데이터 없음" : keywordRanking[1].keyword}</RankList1>
+                    <RankNum>3</RankNum><RankList1>{keywordRanking[2] === undefined ? "데이터 없음" : keywordRanking[2].keyword}</RankList1>
+                </RankWrapper1>
+                <RankWrapper2>
+                    <RankNum>4</RankNum><RankList2>{keywordRanking[3] === undefined ? "데이터 없음" : keywordRanking[3].keyword}</RankList2>
+                    <RankNum>5</RankNum><RankList2>{keywordRanking[4] === undefined ? "데이터 없음" : keywordRanking[4].keyword}</RankList2>
+                    <RankNum>6</RankNum><RankList2>{keywordRanking[5] === undefined ? "데이터 없음" : keywordRanking[5].keyword}</RankList2>
+                </RankWrapper2>
             </Content>
         </Page>
     );

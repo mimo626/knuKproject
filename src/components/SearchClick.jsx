@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import axios, { AxiosError } from "axios";
+import { createContext, useEffect, useState } from "react";
+import { json, Link, redirect, useParams } from "react-router-dom";
 
 const ContentWrapper = styled.div`
     width:11rem;
@@ -18,9 +21,27 @@ const RecentSearch = styled.div`
 `;
 
 function SearchClick() {
+
+    const [recentKeyword, setRecentKeyword] = useState([]);
+    var index = 0;
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.post('/keyword/request/recentRecord', {
+                });
+                setRecentKeyword(response.data);
+            } catch (error) {
+                console.error('에러가 발생했습니다:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
     return (
         <ContentWrapper>
-            <RecentSearch>최근 검색어</RecentSearch>
+            {recentKeyword.map(item => (
+                <RecentSearch key={index++}>{item}</RecentSearch>
+            ))}
         </ContentWrapper>
     );
 }
