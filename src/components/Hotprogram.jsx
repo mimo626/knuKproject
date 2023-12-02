@@ -134,12 +134,30 @@ const ProgramTitleWrapper = styled.div`
     cursor: pointer;
   }
 `;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Link 컴포넌트 import
+
+const handleHeartClick = async (noticeId) => {
+    try {
+        await axios.post('/like/click', {
+            noticeId: noticeId,
+        });
+        location.reload();
+    } catch (error) {
+        alert(error.response.data);
+        console.error('에러가 발생했습니다:', error);
+    }
+};
 
 const Main = () => {
     const [topLikes, setTopLikes] = useState([]);
+    const [topViews, setTopViews] = useState([]);
 
     useEffect(() => {
         axios.get('/user/getDepartment')
@@ -153,15 +171,26 @@ const Main = () => {
                     .then(response => {
                         const topLikesData = response.data.map(item => ({
                             ...item,
-                            images: item.img.split(';'), // 이미지 URL을 세미콜론으로 분리하여 배열로 만듦
+                            images: item.img.split(';'),
                         }));
-
-                        setTopLikes(topLikesData);
 
                         setTopLikes(topLikesData);
                     })
                     .catch(error => {
-                        console.error('좋아요 랭링을 가져오는 도중 에러 발생:', error);
+                        console.error('좋아요 랭킹을 가져오는 도중 에러 발생:', error);
+                    });
+
+                axios.post('/notice/topView', { topsize: 3 })
+                    .then(response => {
+                        const topViewsData = response.data.map(item => ({
+                            ...item,
+                            images: item.img.split(';'),
+                        }));
+
+                        setTopViews(topViewsData);
+                    })
+                    .catch(error => {
+                        console.error('인기 조회수를 가져오는 도중 에러 발생:', error);
                     });
             })
             .catch(error => {
@@ -177,52 +206,72 @@ const Main = () => {
             </TextWrapper>
             <ProgramWrapper>
                 {topLikes.map((item, index) => (
-                    <ProgramContainer key={index}>
-                        {item.images && item.images.length > 0 && (
-                            <ProgramImgWrapper>
-                                <ProgramImg src={item.images[0]} alt={`포스터 ${index + 1}`} />
-                            </ProgramImgWrapper>
-                        )}
-                        <ProgramLCWrapper>
-                            <ProgramLikeWrapper>
-                                <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                                <LikeCount>{item.likeCount}</LikeCount>
-                            </ProgramLikeWrapper>                            
-                        <ProgramComment>
-                        <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                        {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
-                        </ProgramComment>
-                        </ProgramLCWrapper>
-                        <ProgramTitleWrapper>{item.title}</ProgramTitleWrapper>
-                    </ProgramContainer>
+                        <ProgramContainer>
+                            {item.img && item.img !== '' ? (
+                                <ProgramImgWrapper>
+                                    <ProgramImg src={item.images[0]} alt={`포스터`} />
+                                </ProgramImgWrapper>
+                            ) : (
+                                // 이미지가 없는 경우 로고 표시
+                                <ProgramImgWrapper>
+                                    <ProgramImg src={require('../components/knuLogo.png')} alt={`로고 ${index + 1}`} />
+                                </ProgramImgWrapper>
+                            )}
+                            <ProgramLCWrapper>
+                                <ProgramLikeWrapper>
+                                    <IoIosHeart
+                                        style={{ paddingLeft: 12, paddingTop: 1.3, cursor: 'pointer' }} size={35}
+                                        onClick={async () => {await handleHeartClick(item.dbid);}}
+                                    />
+                                    <LikeCount>{item.likeCount}</LikeCount>
+                                </ProgramLikeWrapper>
+                                <ProgramComment>
+                                    <BsChatSquareTextFill style={{ paddingTop: 6 }} size={30} />
+                                    {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
+                                </ProgramComment>
+                            </ProgramLCWrapper>
+                            <ProgramTitleWrapper>
+                                <Link to={`/field/read/${item.dbid}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    {item.title}
+                                </Link>
+                            </ProgramTitleWrapper>
+                        </ProgramContainer>
                 ))}
             </ProgramWrapper>
             <TextInform>인기 조회수 공지사항</TextInform>
             <ProgramWrapper>
-                {topLikes.map((item, index) => (
-                    <ProgramContainer key={index}>
-                        {item.images && item.images.length > 0 && (
-                            <ProgramImgWrapper>
-                                <ProgramImg src={item.images[0]} alt={`포스터 ${index + 1}`} />
-                            </ProgramImgWrapper>
-                        )}
-                        <ProgramLCWrapper>
-                            <ProgramLikeWrapper>
-                                <IoIosHeart style={{ paddingLeft: 12, paddingTop: 1.3 }} size={35} />
-                                <LikeCount>{item.likeCount}</LikeCount>
-                            </ProgramLikeWrapper>
-                        <ProgramComment>
-                        <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                        {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
-                        </ProgramComment>
-                            <ProgramComment>
-                                <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                                <TextCount>{item.commentCount}</TextCount>
-                            </ProgramComment>*
-                        </ProgramLCWrapper>
-                        <ProgramTitleWrapper>{item.title}</ProgramTitleWrapper>
-                    </ProgramContainer>
-                ))}
+                {topViews.map((item, index) => (
+                        <ProgramContainer>
+                            {item.img && item.img !== '' ? (
+                                <ProgramImgWrapper>
+                                    <ProgramImg src={item.images[0]} alt={`포스터`} />
+                                </ProgramImgWrapper>
+                            ) : (
+                                // 이미지가 없는 경우 로고 표시
+                                <ProgramImgWrapper>
+                                    <ProgramImg src={require('../components/knuLogo.png')} alt={`로고 ${index + 1}`} />
+                                </ProgramImgWrapper>
+                            )}
+                            <ProgramLCWrapper>
+                                <ProgramLikeWrapper>
+                                    <IoIosHeart
+                                        style={{ paddingLeft: 12, paddingTop: 1.3, cursor: 'pointer' }} size={35}
+                                        onClick={async () => {await handleHeartClick(item.dbid);}}
+                                    />
+                                    <LikeCount>{item.likeCount}</LikeCount>
+                                </ProgramLikeWrapper>
+                                <ProgramComment>
+                                    <BsChatSquareTextFill style={{ paddingTop: 6 }} size={30} />
+                                    {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
+                                </ProgramComment>
+                            </ProgramLCWrapper>
+                            <ProgramTitleWrapper>
+                                <Link to={`/field/read/${item.dbid}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    {item.title}
+                                </Link>
+                            </ProgramTitleWrapper>
+                        </ProgramContainer>
+                    ))}
             </ProgramWrapper>
         </Page>
     );
