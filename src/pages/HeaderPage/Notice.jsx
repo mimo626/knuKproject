@@ -1,5 +1,8 @@
 import Header from "../../components/Header";
 import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';  // react-router-dom에서 Link import
+import axios from 'axios';
 
 const Page = styled.div`
     width:100%;
@@ -30,16 +33,38 @@ const NoticeLine = styled.div`
     margin-top:2rem;
     margin-bottom:2rem;
 `;
-function Notice(){
-    return(
-        <Page>
-            <Header></Header>
-            <Content>
-                <NoticeText>공지사항</NoticeText>
-                <NoticeLine></NoticeLine>
-            </Content>
-        </Page>
-        
-    );
-    }
+
+
+
+
+const Notice = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('/dev/notice')
+      .then(response => {
+        setPosts(response.data);
+      })
+      .catch(error => {
+        console.error('포스트 불러오기 오류:', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>
+            <Link to={`/notice/${post.id}`}>{post.title} - {post.content}</Link>
+          </li>
+        ))}
+      </ul>
+      <Link to="/create">글 작성하기</Link>
+    </div>
+  );
+};
+
+
+
+
     export default Notice; 
