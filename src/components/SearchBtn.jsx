@@ -9,9 +9,16 @@ const Content = styled.div`
     flex-direction: row;
 `;
 
-const SearchInput = styled.div`
+const SearchInput = styled.input`
     width: 8rem;
     height:2rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.1rem solid #AFAFAF;
+    &:focus{
+        outline: none;
+    }
 `;
 
 const SearchText = styled.div`
@@ -28,7 +35,7 @@ const SearchText = styled.div`
 function SearchBtn(propsSearch) {
     return (
         <Content>
-            <SearchInput onClick={() => propsSearch.switch(false)}><input type="text" id="keyWord"></input></SearchInput>
+            <SearchInput onClick={() => propsSearch.switch(false)} type="text" id="keyWord"></SearchInput>
             <SearchText><IoMdSearch onClick={() => {
                 try {
                     axios.post('/keyword/add/rankingRecord', {
