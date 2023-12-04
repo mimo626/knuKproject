@@ -1,11 +1,13 @@
 import axios, { AxiosError } from "axios";
 import { createContext, useEffect, useState } from "react";
 import { json, Link, redirect, useParams } from "react-router-dom";
+import Parser from 'html-react-parser'; 
 
 function FieldRead() {
     const [data, setData] = useState([]);
     const [userId, setUserId] = useState();
     const { noticeId } = useParams();
+    const [post, setPost] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -14,6 +16,7 @@ function FieldRead() {
                     dbid: noticeId
                 });
                 setData(responseBody.data);
+                setPost(responseBody.data.html)
             } catch (error) {
                 console.error('에러가 발생했습니다:', error);
             }
@@ -22,38 +25,8 @@ function FieldRead() {
     }, []);
 
     return (
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <td>boardId</td>
-                        <td>title</td>
-                        <td>major</td>
-                        <td>type</td>
-                        <td>writer</td>
-                        <td>regdate</td>
-                        <td>view</td>
-                        <td>likeCount</td>
-                        <td>body</td>
-                        <td>img</td>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>{data.boardId}</td>
-                        <td>{data.title}</td>
-                        <td>{data.major}</td>
-                        <td>{data.type}</td>
-                        <td>{data.writer}</td>
-                        <td>{data.regdate}</td>
-                        <td>{data.view}</td>
-                        <td>{data.likeCount}</td>
-                        <td>{data.body}</td>
-                        <td>{data.img}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div> 
+           {Parser(JSON.stringify(post))}
             {data.comments && data.comments.map(item => (
                 <table key={item.id}>
                     <tbody>

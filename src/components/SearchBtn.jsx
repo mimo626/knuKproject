@@ -48,21 +48,22 @@ function SearchBtn(propsSearch) {
                 }} type="text" id="keyWord"></SearchInput>
 
             <SearchText>
-            <IoMdSearch onClick={() => {
+            <IoMdSearch onClick={async () => {
                 try {
-                    axios.post('/keyword/add/rankingRecord', {
+                    await axios.post('/keyword/add/rankingRecord', {
                         keyword: value
                     });
-
+                    
                 } catch (error) {
                     alert(error)
                     console.error('에러가 발생했습니다:', error);
                 }
 
                 try {
-                    axios.post('/keyword/add/recentRecord', {
+                    await axios.post('/keyword/add/recentRecord', {
                         keyword: value
                     });
+                    
                 } catch (error) {
                     alert(error)
                     console.error('에러가 발생했습니다:', error);
