@@ -128,7 +128,7 @@ function FieldKeyword() {
   return (
     <Page>
       <Header />
-      {data.length > 0 && <MajorTitle>{data[0].major}</MajorTitle>}
+      {data.length > 0 && <MajorTitle>검색 결과</MajorTitle>}
       <Line />
       <div>
         {/* 데이터를 사용하여 테이블 및 페이지 버튼 렌더링 */}
