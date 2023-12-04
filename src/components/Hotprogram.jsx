@@ -10,8 +10,7 @@ import { BsChatSquareTextFill } from "react-icons/bs";
 const Page = styled.div`
     width:100%;
     background-color: #ADC9F7;
-    padding-bottom:8rem;
-    height: 55rem;
+    height: 100rem;
 
 `;
 const TextWrapper = styled.div`
@@ -19,10 +18,8 @@ const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 12rem;
   margin:0 auto;
-  padding-bottom: 2rem;
-  height: 30%;
+  height: 20%;
 `;
 const TextHot = styled.div`
   color:#fff;
@@ -32,7 +29,6 @@ const TextHot = styled.div`
   font-weight: 700;
   line-height: 1rem;
   text-align: center;
-  margin-top: 6.5rem;
 `;
 const TextInform = styled.div`
   color: #fff;

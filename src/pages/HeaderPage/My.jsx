@@ -91,6 +91,8 @@ const MyInfromWrapper2 = styled.div`
     font-style: normal;
     font-weight: 600;
     justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
 `;
 const MyEmail = styled.div`
     font-size: 1.5rem;
