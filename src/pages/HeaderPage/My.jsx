@@ -119,8 +119,8 @@ const EmailBtn = styled.div`
 const ProgramContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 14rem;
-    height: 23rem;
+    width: 13rem;
+    height: 25rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
     background: #FFF;
@@ -138,7 +138,7 @@ const ProgramImgWrapper = styled.div`
 `;
 
 const ProgramImg = styled.img`
-    width: 12rem;
+    width: 10.5rem;
     height: 15rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
@@ -305,11 +305,13 @@ function My() {
                 <MyContent>
                     <MyTitleWrapper>작성한 댓글</MyTitleWrapper>
                     <MyInfromWrapper>
-                        {commentsData.map((item, index) => (
-                            <div key={index}>
-                                {item && item.comment && <p>{item.comment}</p>}
-                            </div>
-                        ))}
+                        <MyComment>
+                            {commentsData.map((item, index) => (
+                                <div key={index}>
+                                    {item && item.comment && <p>{item.comment}</p>}
+                                </div>
+                            ))}
+                        </MyComment>
                     </MyInfromWrapper>
                 </MyContent>
             </Content>

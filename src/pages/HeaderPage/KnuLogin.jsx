@@ -94,6 +94,24 @@ const Input = styled.input`
         outline: none;
     }
 `;
+const MajorSelect = styled.select`
+    display: flex;
+    width: 37.7rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    background: #E8F9FA;
+    color: #AFAFAF;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.1rem solid #AFAFAF;
+    &:focus{
+        outline: none;
+    }
+`;
+const MajorOption = styled.option`
+    color: black;
+`;
 const EmailBtn = styled.button`
     display: flex;
     width: 10.9rem;
@@ -195,7 +213,26 @@ function Login(){
                 <TextWrapper2>
                     <KnuEmail>본인의 학과</KnuEmail>
                     <EmailWrapper>
-                        <Input  />
+                        <MajorSelect>
+                            <MajorOption selected>본인의 학부(주전공)을 선택해주세요.</MajorOption>
+                            <MajorOption>ICT융합공학부</MajorOption>
+                            <MajorOption>인공지능융합공학부</MajorOption>
+                            <MajorOption>부동산건설학부</MajorOption>
+                            <MajorOption>사회복지학부</MajorOption>
+                            <MajorOption>스포츠복지전공</MajorOption>
+                            <MajorOption>실버산업학과</MajorOption>
+                            <MajorOption>글로벌학부</MajorOption>
+                            <MajorOption>음악학과</MajorOption>
+                            <MajorOption>기독교학과</MajorOption>
+                            <MajorOption>한영문화콘텐츠학과</MajorOption>
+                            <MajorOption>글로벌경영학부</MajorOption>
+                            <MajorOption>공공인재학과</MajorOption>
+                            <MajorOption>경제세무학과</MajorOption>
+                            <MajorOption>융합자유전공학부</MajorOption>
+                            <MajorOption>교육학과</MajorOption>
+                            <MajorOption>유아교육과</MajorOption>
+                            <MajorOption>특수교육과</MajorOption>
+                        </MajorSelect>
                     </EmailWrapper>
                 </TextWrapper2>
                 <Link to={'/main'} style={{ textDecoration: "none"}}><MainBtn>인증 완료</MainBtn></Link>

@@ -13,22 +13,19 @@ const Page = styled.div`
     height: 100rem;
 
 `;
-const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-shrink: 0;
-  margin:0 auto;
-  height: 20%;
-`;
+
 const TextHot = styled.div`
-  color:#fff;
-  font-family: Racing Sans One;
-  font-size: 3.75rem;
-  font-style: italic;
-  font-weight: 700;
-  line-height: 1rem;
-  text-align: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 5rem;
+    padding-top: 5rem;
+    color:#fff;
+    font-family: Racing Sans One;
+    font-size: 3.75rem;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1rem;
+    text-align: center;
 `;
 const TextInform = styled.div`
   color: #fff;
@@ -38,7 +35,8 @@ const TextInform = styled.div`
   font-weight: 700;
   line-height: 1rem;
   text-align: center;
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
 `;
 const ProgramWrapper = styled.div`
   width:70%;
@@ -196,44 +194,7 @@ const Main = () => {
 
     return (
         <Page>
-            <TextWrapper>
-                <TextHot>Hot Program</TextHot>
-                <TextInform>인기 좋아요 공지사항</TextInform>
-            </TextWrapper>
-            <ProgramWrapper>
-                {topLikes.map((item, index) => (
-                        <ProgramContainer>
-                            {item.img && item.img !== '' ? (
-                                <ProgramImgWrapper>
-                                    <ProgramImg src={item.images[0]} alt={`포스터`} />
-                                </ProgramImgWrapper>
-                            ) : (
-                                // 이미지가 없는 경우 로고 표시
-                                <ProgramImgWrapper>
-                                    <ProgramImg src={require('../components/knuLogo.png')} alt={`로고 ${index + 1}`} />
-                                </ProgramImgWrapper>
-                            )}
-                            <ProgramLCWrapper>
-                                <ProgramLikeWrapper>
-                                    <IoIosHeart
-                                        style={{ paddingLeft: 12, paddingTop: 1.3, cursor: 'pointer' }} size={35}
-                                        onClick={async () => {await handleHeartClick(item.dbid);}}
-                                    />
-                                    <LikeCount>{item.likeCount}</LikeCount>
-                                </ProgramLikeWrapper>
-                                <ProgramComment>
-                                    <BsChatSquareTextFill style={{ paddingTop: 6 }} size={30} />
-                                    {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
-                                </ProgramComment>
-                            </ProgramLCWrapper>
-                            <ProgramTitleWrapper>
-                                <Link to={`/field/read/${item.dbid}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                    {item.title}
-                                </Link>
-                            </ProgramTitleWrapper>
-                        </ProgramContainer>
-                ))}
-            </ProgramWrapper>
+            <TextHot>Hot Program</TextHot>
             <TextInform>인기 조회수 공지사항</TextInform>
             <ProgramWrapper>
                 {topViews.map((item, index) => (
@@ -269,6 +230,41 @@ const Main = () => {
                         </ProgramContainer>
                     ))}
             </ProgramWrapper>
+            <TextInform>인기 좋아요 공지사항</TextInform>
+            <ProgramWrapper>
+                {topLikes.map((item, index) => (
+                        <ProgramContainer>
+                            {item.img && item.img !== '' ? (
+                                <ProgramImgWrapper>
+                                    <ProgramImg src={item.images[0]} alt={`포스터`} />
+                                </ProgramImgWrapper>
+                            ) : (
+                                // 이미지가 없는 경우 로고 표시
+                                <ProgramImgWrapper>
+                                    <ProgramImg src={require('../components/knuLogo.png')} alt={`로고 ${index + 1}`} />
+                                </ProgramImgWrapper>
+                            )}
+                            <ProgramLCWrapper>
+                                <ProgramLikeWrapper>
+                                    <IoIosHeart
+                                        style={{ paddingLeft: 12, paddingTop: 1.3, cursor: 'pointer' }} size={35}
+                                        onClick={async () => {await handleHeartClick(item.dbid);}}
+                                    />
+                                    <LikeCount>{item.likeCount}</LikeCount>
+                                </ProgramLikeWrapper>
+                                <ProgramComment>
+                                    <BsChatSquareTextFill style={{ paddingTop: 6 }} size={30} />
+                                    {/*<TextCount>{item.댓글갯수변수명}</TextCount>*/}
+                                </ProgramComment>
+                            </ProgramLCWrapper>
+                            <ProgramTitleWrapper>
+                                <Link to={`/field/read/${item.dbid}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    {item.title}
+                                </Link>
+                            </ProgramTitleWrapper>
+                        </ProgramContainer>
+                ))}
+            </ProgramWrapper> 
         </Page>
     );
 }
