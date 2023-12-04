@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { IoMdSearch } from "react-icons/io";
 import axios, { AxiosError } from "axios";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { createContext, useEffect, useState } from "react";
 
 const Content = styled.div`
     width:12rem;
@@ -33,14 +36,24 @@ const SearchText = styled.div`
 `;
 
 function SearchBtn(propsSearch) {
+    const [value, setValue] = useState("");
+    const navigate = useNavigate();
+
     return (
         <Content>
-            <SearchInput onClick={() => propsSearch.switch(false)} type="text" id="keyWord"></SearchInput>
-            <SearchText><IoMdSearch onClick={() => {
+            
+            <SearchInput onChange={() => {
+                propsSearch.switch(false) 
+                setValue(document.getElementById("keyWord").value)
+                }} type="text" id="keyWord"></SearchInput>
+
+            <SearchText>
+            <IoMdSearch onClick={() => {
                 try {
                     axios.post('/keyword/add/rankingRecord', {
-                        keyword: document.getElementById("keyWord").value
+                        keyword: value
                     });
+
                 } catch (error) {
                     alert(error)
                     console.error('에러가 발생했습니다:', error);
@@ -48,12 +61,13 @@ function SearchBtn(propsSearch) {
 
                 try {
                     axios.post('/keyword/add/recentRecord', {
-                        keyword: document.getElementById("keyWord").value
+                        keyword: value
                     });
                 } catch (error) {
                     alert(error)
                     console.error('에러가 발생했습니다:', error);
                 }
+                navigate('/field/keyword/' + value + '/page/1/')
                 location.reload();
             }}></IoMdSearch></SearchText>
         </Content>

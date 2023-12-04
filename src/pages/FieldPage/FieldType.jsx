@@ -135,7 +135,7 @@ function FieldType() {
         {/* 데이터를 사용하여 테이블 및 페이지 버튼 렌더링 */}
         <ContentWrapper>
         {data.map(item => (
-          <Link to={'/field/read/' + item.dbid} style={{textDecoration: "none" }}><Content>
+          <Link to={'/field/read/' + item.dbid} style={{textDecoration: "none" }} key={item.dbid}><Content>
             <ImgWrapper src={item.img}></ImgWrapper>
             <TableWrapper>
               <Title style={{color:'black'}}>{item.title}</Title>

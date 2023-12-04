@@ -9,6 +9,7 @@ import KnuLogin from './pages/HeaderPage/KnuLogin';
 import FieldMajor from './pages/FieldPage/FieldMajor';
 import FieldType from './pages/FieldPage/FieldType';
 import FieldRead from './pages/FieldPage/FieldRead';
+import FieldKeyword from './pages/FieldPage/FieldKeyword';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path='/knuLogin' element={<KnuLogin/>}></Route>
       <Route path="/field/type/:type/page/:page?" element={<FieldType/>}></Route>
       <Route path="/field/major/:major/page/:page?" element={<FieldMajor/>}></Route>
+      <Route path="/field/keyword/:keyword/page/:page?" element={<FieldKeyword/>}></Route>
       <Route path="/field/read/:noticeId?" element={<FieldRead/>}></Route>
     </Routes>
   );

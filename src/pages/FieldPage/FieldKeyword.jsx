@@ -1,10 +1,11 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { json, Link, useParams } from "react-router-dom";
-import Header from "../../components/Header";
 import styled from "styled-components";
+import Header from "../../components/Header";
 import { IoIosHeart } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
+
 const Page = styled.div`
     width:100%;
     margin-top: 8rem;
@@ -99,28 +100,28 @@ const T= styled.table`
   color:gray;
 
 `;
-function FieldMajor() {
+
+function FieldKeyword() {
   const [data, setData] = useState([]);
-  const { major } = useParams();
+  const { keyword } = useParams();
   const { page } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.post('/notice/requestPage', {
-          major: major,
+          major: '',
           type: '',
-          keyword: '',
+          keyword: keyword,
           page: page,
           perPage: 6,
         });
-
         setData(response.data.data);
       } catch (error) {
         console.error('에러가 발생했습니다:', error);
       }
     };
-
+    
     fetchData();
   }, []);
 
@@ -154,4 +155,4 @@ function FieldMajor() {
   );
 }
 
-export default FieldMajor;
+export default FieldKeyword;
