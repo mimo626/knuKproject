@@ -1,8 +1,5 @@
 import Header from "../../components/Header";
 import styled from "styled-components";
-import poster1 from '../../components/poster1.png';
-import poster2 from '../../components/poster2.png';
-import poster3 from '../../components/poster3.png';
 import { IoIosHeart } from "react-icons/io";
 import { BsChatSquareTextFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -209,8 +206,54 @@ const MyComment = styled.div`
     margin-left:1.5rem;
 `;
 
-function My(){
-    return(
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function My() {
+    const [userEmail, setUserEmail] = useState('');
+    const [likesData, setLikesData] = useState([]);
+    const [commentsData, setCommentsData] = useState([]);
+
+    // 이메일 가리기 함수
+    const maskEmail = (email) => {
+        const atIndex = email.indexOf('@');
+        const domain = email.slice(atIndex);
+        const username = email.slice(0, atIndex);
+        const maskedUsername = username.substring(0, 2) + '*'.repeat(username.length - 2);
+        const maskedEmail = maskedUsername;
+        return maskedEmail;
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // 이메일
+                const emailResponse = await axios.get('/user/getEmail');
+                const email = emailResponse.data;
+                const maskedEmail = maskEmail(email);
+                setUserEmail(maskedEmail);
+
+                // 좋아요
+                const likedItemsResponse = await axios.post('/user/likes');
+                const processedLikedItems = likedItemsResponse.data.map(item => ({
+                    ...item,
+                    images: item.img.split(';'),
+                }));
+                setLikesData(processedLikedItems);
+
+                // 댓글
+                const commentsResponse = await axios.post('/user/comments');
+                const commentsData = commentsResponse.data;
+                setCommentsData(commentsData);
+            } catch (error) {
+                console.error('데이터를 가져오는 도중 오류 발생:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
         <Page>
             <Header></Header>
             <Content>
@@ -219,9 +262,10 @@ function My(){
                 <MyContent>
                     <MyTitleWrapper>Profile</MyTitleWrapper>
                     <MyInfromWrapper>
-                        <MyEmail>닉네임: y***@gmail.com</MyEmail>
+                        <MyEmail>닉네임: {userEmail}</MyEmail>
                         <EmailBtnContainer>
-                        <Link to={'/knuLogin'} style={{ textDecoration: "none" }}><EmailBtn>강남대 이메일인증</EmailBtn></Link>
+                            <Link to={'/knuLogin'} style={{textDecoration: "none"}}><EmailBtn>강남대
+                                이메일인증</EmailBtn></Link>
                         </EmailBtnContainer>
                     </MyInfromWrapper>
                 </MyContent>
@@ -229,105 +273,47 @@ function My(){
                 <MyContent>
                     <MyTitleWrapper>좋아요 누른 <br></br>게시물</MyTitleWrapper>
                     <MyInfromWrapper2>
-                        <ProgramContainer>
-                            <ProgramImgWrapper>
-                                <ProgramImg  src={poster1} alt='포스터' ></ProgramImg>
-                            </ProgramImgWrapper>
-                            <ProgramLCWrapper>
-                                <ProgramLikeWrapper>
-                                    <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                                    <LikeCount>56</LikeCount>
-                                </ProgramLikeWrapper>
-                                <ProgramComment>
-                                    <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                                    <TextCount>34</TextCount>
-                                </ProgramComment>
-                            </ProgramLCWrapper>
-                            <ProgramTitleWrapper>KT 에이블 스쿨 5기 지역추천제 선발/모집 (~12/8)</ProgramTitleWrapper>
-                        </ProgramContainer>
-                        <ProgramContainer>
-                            <ProgramImgWrapper>
-                                <ProgramImg  src={poster2} alt='포스터' ></ProgramImg>
-                            </ProgramImgWrapper>
-                            <ProgramLCWrapper>
-                                <ProgramLikeWrapper>
-                                    <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                                    <LikeCount>102</LikeCount>
-                                </ProgramLikeWrapper>
-                                <ProgramComment>
-                                    <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                                    <TextCount>45</TextCount>
-                                </ProgramComment>
-                            </ProgramLCWrapper>
-                            <ProgramTitleWrapper>취업콘텐츠 영상 자율강좌 시청 안내</ProgramTitleWrapper>
-                        </ProgramContainer>
-                        <ProgramContainer>
-                            <ProgramImgWrapper>
-                                <ProgramImg  src={poster3} alt='포스터' ></ProgramImg>
-                            </ProgramImgWrapper>
-                            <ProgramLCWrapper>
-                                <ProgramLikeWrapper>
-                                    <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                                    <LikeCount>34</LikeCount>
-                                </ProgramLikeWrapper>
-                                <ProgramComment>
-                                    <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                                    <TextCount>17</TextCount>
-                                </ProgramComment>
-                            </ProgramLCWrapper>
-                            <ProgramTitleWrapper>[11/8] MBTI 사랑으로 통역이 되나요? 더 레인보우 특강 수강생 모집</ProgramTitleWrapper>
-                        </ProgramContainer>
-                        <ProgramContainer>
-                            <ProgramImgWrapper>
-                                <ProgramImg  src={poster3} alt='포스터' ></ProgramImg>
-                            </ProgramImgWrapper>
-                            <ProgramLCWrapper>
-                                <ProgramLikeWrapper>
-                                    <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                                    <LikeCount>34</LikeCount>
-                                </ProgramLikeWrapper>
-                                <ProgramComment>
-                                    <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                                    <TextCount>17</TextCount>
-                                </ProgramComment>
-                            </ProgramLCWrapper>
-                            <ProgramTitleWrapper>[11/8] MBTI 사랑으로 통역이 되나요? 더 레인보우 특강 수강생 모집</ProgramTitleWrapper>
-                        </ProgramContainer>
-                        <ProgramContainer>
-                            <ProgramImgWrapper>
-                                <ProgramImg  src={poster3} alt='포스터' ></ProgramImg>
-                            </ProgramImgWrapper>
-                            <ProgramLCWrapper>
-                                <ProgramLikeWrapper>
-                                    <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
-                                    <LikeCount>34</LikeCount>
-                                </ProgramLikeWrapper>
-                                <ProgramComment>
-                                    <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
-                                    <TextCount>17</TextCount>
-                                </ProgramComment>
-                            </ProgramLCWrapper>
-                            <ProgramTitleWrapper>[11/8] MBTI 사랑으로 통역이 되나요? 더 레인보우 특강 수강생 모집</ProgramTitleWrapper>
-                        </ProgramContainer>
+                        {likesData.map(item => (
+                            <ProgramContainer key={item.id}>
+                                <ProgramImgWrapper>
+                                    {item.img && item.img !== '' ? (
+                                        <ProgramImg src={item.images[0]} alt={`포스터`} />
+                                    ) : (
+                                        <img src={require('../../components/knuLogo.png')} alt={`로고`} />
+                                    )}
+                                </ProgramImgWrapper>
+                                <ProgramLCWrapper>
+                                    <ProgramLikeWrapper>
+                                        <IoIosHeart style={{paddingLeft: 12, paddingTop: 1.3}} size={35}></IoIosHeart>
+                                        <LikeCount>{item.likeCount}</LikeCount>
+                                    </ProgramLikeWrapper>
+                                    <ProgramComment>
+                                        <BsChatSquareTextFill style={{paddingTop: 6}} size={30}></BsChatSquareTextFill>
+                                        <TextCount>{item.commentCount}</TextCount>
+                                    </ProgramComment>
+                                </ProgramLCWrapper>
+                                <ProgramTitleWrapper>
+                                    <Link to={`/field/read/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        {item.title}
+                                    </Link>
+                                </ProgramTitleWrapper>
+                            </ProgramContainer>
+                        ))}
                     </MyInfromWrapper2>
                 </MyContent>
                 <MYLine2></MYLine2>
                 <MyContent>
                     <MyTitleWrapper>작성한 댓글</MyTitleWrapper>
                     <MyInfromWrapper>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
-                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
+                        {commentsData.map((item, index) => (
+                            <div key={index}>
+                                {item && item.comment && <p>{item.comment}</p>}
+                            </div>
+                        ))}
                     </MyInfromWrapper>
                 </MyContent>
             </Content>
         </Page>
-        
     );
-    }
+}
     export default My; 
