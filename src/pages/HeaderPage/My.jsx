@@ -13,7 +13,7 @@ const Page = styled.div`
 
 `;
 const Content = styled.div`
-    width:75.5rem;
+    width:75rem;
     display: flex;
     flex-direction: column;
     margin:0 auto;
@@ -61,22 +61,10 @@ const MyTitleWrapper = styled.div`
     border-right: 1px solid #D3D3D3;
     align-items: center;
 `;
-const MyTitleWrapper2 = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 20%;
-    height: 25rem;
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 600;
-    border-right: 1px solid #D3D3D3;
-    align-items: center;
-`;
 const MyInfromWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 80%;
-    height: 10rem;
+    width: 91%;    
     font-size: 2.2rem;
     font-style: normal;
     font-weight: 600;
@@ -85,14 +73,16 @@ const MyInfromWrapper = styled.div`
 const MyInfromWrapper2 = styled.div`
     display: flex;
     flex-direction: row;
-    width: 80%;
-    height: 25rem;
     font-size: 2.2rem;
     font-style: normal;
     font-weight: 600;
-    justify-content: center;
+    width: 91%; 
+    max-width: 91%;
     align-items: flex-start;
     align-content: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-left: 1.5rem;
 `;
 const MyEmail = styled.div`
     font-size: 1.5rem;
@@ -140,7 +130,6 @@ const ProgramContainer = styled.div`
     box-shadow: 0px 4px 4px 0px #B4B4B4;
     gap: 0.5rem;
     align-items: center;
-    margin-left: 5rem;
 `;
 
 const ProgramImgWrapper = styled.div`
@@ -216,8 +205,8 @@ const MyComment = styled.div`
     font-size: 1.2rem;
     font-style: normal;
     font-weight: 500;
-    margin-bottom:2rem;
-    margin-left:2rem;
+    margin-bottom:1rem;
+    margin-left:1.5rem;
 `;
 
 function My(){
@@ -238,7 +227,7 @@ function My(){
                 </MyContent>
                 <MYLine2></MYLine2>
                 <MyContent>
-                    <MyTitleWrapper2>좋아요 누른 <br></br>게시물</MyTitleWrapper2>
+                    <MyTitleWrapper>좋아요 누른 <br></br>게시물</MyTitleWrapper>
                     <MyInfromWrapper2>
                         <ProgramContainer>
                             <ProgramImgWrapper>
@@ -288,12 +277,51 @@ function My(){
                             </ProgramLCWrapper>
                             <ProgramTitleWrapper>[11/8] MBTI 사랑으로 통역이 되나요? 더 레인보우 특강 수강생 모집</ProgramTitleWrapper>
                         </ProgramContainer>
+                        <ProgramContainer>
+                            <ProgramImgWrapper>
+                                <ProgramImg  src={poster3} alt='포스터' ></ProgramImg>
+                            </ProgramImgWrapper>
+                            <ProgramLCWrapper>
+                                <ProgramLikeWrapper>
+                                    <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
+                                    <LikeCount>34</LikeCount>
+                                </ProgramLikeWrapper>
+                                <ProgramComment>
+                                    <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
+                                    <TextCount>17</TextCount>
+                                </ProgramComment>
+                            </ProgramLCWrapper>
+                            <ProgramTitleWrapper>[11/8] MBTI 사랑으로 통역이 되나요? 더 레인보우 특강 수강생 모집</ProgramTitleWrapper>
+                        </ProgramContainer>
+                        <ProgramContainer>
+                            <ProgramImgWrapper>
+                                <ProgramImg  src={poster3} alt='포스터' ></ProgramImg>
+                            </ProgramImgWrapper>
+                            <ProgramLCWrapper>
+                                <ProgramLikeWrapper>
+                                    <IoIosHeart style={{ paddingLeft:12 , paddingTop:1.3}} size={35} ></IoIosHeart>
+                                    <LikeCount>34</LikeCount>
+                                </ProgramLikeWrapper>
+                                <ProgramComment>
+                                    <BsChatSquareTextFill style={{paddingTop:6}} size={30}></BsChatSquareTextFill>
+                                    <TextCount>17</TextCount>
+                                </ProgramComment>
+                            </ProgramLCWrapper>
+                            <ProgramTitleWrapper>[11/8] MBTI 사랑으로 통역이 되나요? 더 레인보우 특강 수강생 모집</ProgramTitleWrapper>
+                        </ProgramContainer>
                     </MyInfromWrapper2>
                 </MyContent>
                 <MYLine2></MYLine2>
                 <MyContent>
                     <MyTitleWrapper>작성한 댓글</MyTitleWrapper>
                     <MyInfromWrapper>
+                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
+                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
+                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
+                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
+                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
+                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
+                        <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
                         <MyComment>스터디 같이 신청할 사람 모집해요~</MyComment>
                     </MyInfromWrapper>
                 </MyContent>
