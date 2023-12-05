@@ -119,8 +119,8 @@ const EmailBtn = styled.div`
 const ProgramContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 13rem;
-    height: 25rem;
+    width: 14rem;
+    height: 23rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
     background: #FFF;
@@ -138,7 +138,7 @@ const ProgramImgWrapper = styled.div`
 `;
 
 const ProgramImg = styled.img`
-    width: 10.5rem;
+    width: 12rem;
     height: 15rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
@@ -214,24 +214,38 @@ function My() {
     const [likesData, setLikesData] = useState([]);
     const [commentsData, setCommentsData] = useState([]);
 
-    // 이메일 가리기 함수
-    const maskEmail = (email) => {
-        const atIndex = email.indexOf('@');
-        const domain = email.slice(atIndex);
-        const username = email.slice(0, atIndex);
-        const maskedUsername = username.substring(0, 2) + '*'.repeat(username.length - 2);
-        const maskedEmail = maskedUsername;
-        return maskedEmail;
+    const handleHeartClick = async (noticeId) => {
+        try {
+            await axios.post('/like/click', {
+                noticeId: noticeId,
+            });
+            location.reload();
+        } catch (error) {
+            alert(error.response.data);
+            console.error('에러가 발생했습니다:', error);
+        }
     };
 
     useEffect(() => {
+
+        const handleHeartClick = async (noticeId) => {
+            try {
+                await axios.post('/like/click', {
+                    noticeId: noticeId,
+                });
+                location.reload();
+            } catch (error) {
+                alert(error.response.data);
+                console.error('에러가 발생했습니다:', error);
+            }
+        };
+
         const fetchData = async () => {
             try {
                 // 이메일
                 const emailResponse = await axios.get('/user/getEmail');
                 const email = emailResponse.data;
-                const maskedEmail = maskEmail(email);
-                setUserEmail(maskedEmail);
+                setUserEmail(email);
 
                 // 좋아요
                 const likedItemsResponse = await axios.post('/user/likes');
@@ -262,7 +276,7 @@ function My() {
                 <MyContent>
                     <MyTitleWrapper>Profile</MyTitleWrapper>
                     <MyInfromWrapper>
-                        <MyEmail>닉네임: {userEmail}</MyEmail>
+                        <MyEmail>닉네임: {userEmail.split('@')[0]}</MyEmail>
                         <EmailBtnContainer>
                             <Link to={'/knuLogin'} style={{textDecoration: "none"}}><EmailBtn>강남대
                                 이메일인증</EmailBtn></Link>
@@ -284,7 +298,10 @@ function My() {
                                 </ProgramImgWrapper>
                                 <ProgramLCWrapper>
                                     <ProgramLikeWrapper>
-                                        <IoIosHeart style={{paddingLeft: 12, paddingTop: 1.3}} size={35}></IoIosHeart>
+                                        <IoIosHeart
+                                            style={{ paddingLeft: 12, paddingTop: 1.3, cursor: 'pointer' }} size={35}
+                                            onClick={async () => {await handleHeartClick(item.id);}}
+                                        />
                                         <LikeCount>{item.likeCount}</LikeCount>
                                     </ProgramLikeWrapper>
                                     <ProgramComment>
@@ -305,13 +322,14 @@ function My() {
                 <MyContent>
                     <MyTitleWrapper>작성한 댓글</MyTitleWrapper>
                     <MyInfromWrapper>
-                        <MyComment>
-                            {commentsData.map((item, index) => (
-                                <div key={index}>
-                                    {item && item.comment && <p>{item.comment}</p>}
-                                </div>
-                            ))}
-                        </MyComment>
+                        {commentsData.map((item, index) => (
+                            <div key={index}>
+                                <Link to={`/field/read/${item.notice.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <p>{item.comment}</p>
+                                </Link>
+                            </div>
+                        ))}
+
                     </MyInfromWrapper>
                 </MyContent>
             </Content>

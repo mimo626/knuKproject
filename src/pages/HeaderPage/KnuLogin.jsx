@@ -157,8 +157,10 @@ function Login(){
   const [email, setEmail] = useState('');
   const [enteredNumber, setEnteredNumber] = useState('');
   const [message, setMessage] = useState('');
+  const [selectedMajor, setSelectedMajor] = useState('');
 
-  const sendMail = async () => {
+
+    const sendMail = async () => {
     try {
       
       const response = await axios.post('/mail/send?mail='+email, {
@@ -184,6 +186,23 @@ function Login(){
       setMessage(`에러 발생: ${error.message}`);
     }
   };
+
+    const saveDepartment = async () => {
+        try {
+            const response = await axios.post('/user/saveDepartment', null, {
+                params: { department: selectedMajor },
+            });
+
+            alert('학부 저장 완료.');
+            setMessage(response.data);
+            setTimeout(() => {
+                window.location.href = '/main';
+            }, 0);
+        } catch (error) {
+            setMessage(`에러 발생: ${error.message}`);
+        }
+    };
+
 
   return (
     <Page>
@@ -213,7 +232,7 @@ function Login(){
                 <TextWrapper2>
                     <KnuEmail>본인의 학과</KnuEmail>
                     <EmailWrapper>
-                        <MajorSelect>
+                        <MajorSelect onChange={(e) => setSelectedMajor(e.target.value)}>
                             <MajorOption selected>본인의 학부(주전공)을 선택해주세요.</MajorOption>
                             <MajorOption>ICT융합공학부</MajorOption>
                             <MajorOption>인공지능융합공학부</MajorOption>
@@ -235,7 +254,11 @@ function Login(){
                         </MajorSelect>
                     </EmailWrapper>
                 </TextWrapper2>
-                <Link to={'/main'} style={{ textDecoration: "none"}}><MainBtn>인증 완료</MainBtn></Link>
+                <MainBtn onClick={saveDepartment}>
+                    <Link to="/main" style={{ textDecoration: "none", color: "inherit" }}>
+                        인증 완료
+                    </Link>
+                </MainBtn>
             </Content>
         </Page>
   );
