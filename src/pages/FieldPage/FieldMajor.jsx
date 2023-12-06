@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import styled from "styled-components";
 import { IoIosHeart } from "react-icons/io";
 import { IoEye } from "react-icons/io5";
+
 const Page = styled.div`
     width:100%;
     margin-top: 8rem;
@@ -97,8 +98,8 @@ const T= styled.table`
   padding-right:1.2rem;
   text-decoration: none;
   color:gray;
-
-`;
+  
+  `;
 function FieldMajor() {
   const [data, setData] = useState([]);
   const { major } = useParams();
