@@ -62,7 +62,6 @@ const ImgWrapper= styled.img`
   width: 45%;
   flex-shrink: 0;
   border-radius: 0.625rem;
-  background: blue;
   margin: 0 auto;
   gap: 0.5rem;
   margin: 0.5rem 0.5rem;
@@ -155,7 +154,7 @@ function FieldMajor() {
                                 <ImgWrapper src={item.images[0]} alt={`포스터`}></ImgWrapper>
                           ) : (
                               // 이미지가 없는 경우 로고 표시
-                                <ImgWrapper src={require('../../components/knuLogo.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
+                                <ImgWrapper src={require('../../components/knuLogoB.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
                           )}
                     <TableWrapper>
                       <Title style={{ color: 'black' }}>{item.title}</Title>
