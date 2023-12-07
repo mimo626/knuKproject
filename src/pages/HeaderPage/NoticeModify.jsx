@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';  // react-router-dom에서 useParams import
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Page = styled.div`
@@ -37,53 +37,57 @@ const NoticeLine = styled.div`
 
 
 
-const NoticeModify = () => {
-  const { id } = useParams();  // URL에서 id를 받아옴
+
+const VieNoticeModifywPostPage = () => {
+  const { postId } = useParams();
+  const history = useHistory();
 
   const [post, setPost] = useState({});
-  const [updatedPost, setUpdatedPost] = useState({
-    title: '',
-    content: '',
-  });
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   useEffect(() => {
-    axios.get(`/dev/api/v1/posts/${id}`)
-      .then(response => {
-        setPost(response.data);
+    // postId를 사용하여 해당 게시글 정보를 가져오는 로직
+    axios.get(`/api/v1/posts/${postId}`)
+      .then((response) => {
+        const postData = response.data;
+        setPost(postData);
+        setTitle(postData.title);
+        setContent(postData.content);
       })
-      .catch(error => {
-        console.error('포스트 불러오기 오류:', error);
+      .catch((error) => {
+        console.error(error);
+        // 에러 처리 로직 추가
       });
-  }, [id]);
+  }, [postId]);
 
-  const handleUpdate = () => {
-    axios.put(`/dev/update/${id}`, updatedPost)
-      .then(response => {
-        console.log('포스트 업데이트 성공:', response.data);
+  const update = () => {
+    const data = { title, content };
+
+    axios.put(`/api/v1/posts/${postId}`, data)
+      .then(() => {
+        alert('글이 수정되었습니다.');
+        history.push('/notice');  // 페이지 이동
       })
-      .catch(error => {
-        console.error('포스트 업데이트 오류:', error);
+      .catch((error) => {
+        alert(JSON.stringify(error));
       });
   };
 
   return (
-    <div>
-      <h2>포스트 업데이트 페이지</h2>
-      <div>
-        <p>현재 포스트 내용:</p>
-        <p>{post.title} - {post.content}</p>
-      </div>
-      <div>
-        <input type="text" placeholder="새로운 제목" onChange={(e) => setUpdatedPost({ ...updatedPost, title: e.target.value })} />
-        <input type="text" placeholder="새로운 내용" onChange={(e) => setUpdatedPost({ ...updatedPost, content: e.target.value })} />
-        <button onClick={handleUpdate}>
-          업데이트
-        </button>
-      </div>
-    </div>
+    <>
+      {/* 게시글 내용 및 수정 버튼 등을 표시하는 내용 */}
+      <h2>{post.title}</h2>
+      <p>{post.content}</p>
+
+      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} />
+
+      <button onClick={update}>Update</button>
+      <button onClick={() => history.push('/notice')}>Back</button>
+    </>
   );
 };
-
 
 
 

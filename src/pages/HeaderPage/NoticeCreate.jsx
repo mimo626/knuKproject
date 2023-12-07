@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import styled from "styled-components";
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';  // react-router-dom에서 useHistory import
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Page = styled.div`
@@ -36,40 +36,38 @@ const NoticeLine = styled.div`
 
 
 
+
 const NoticeCreate = () => {
-  const [newPost, setNewPost] = useState({
-    title: '',
-    content: '',
-    writer: '',
-  });
+  const [title, setTitle] = useState('');
+  const [writer, setWriter] = useState('');
+  const [content, setContent] = useState('');
 
   const history = useHistory();
 
-  const handleSave = () => {
-    axios.post('/dev/save', newPost)
-      .then(response => {
-        console.log('새로운 포스트 저장 성공:', response.data);
-        // 저장 후 Notice 페이지로 이동
-        history.push('/notice');
+  const save = () => {
+    const data = { title, writer, content };
+
+    axios.post('/api/v1/posts', data)
+      .then(() => {
+        alert('글이 등록되었습니다.');
+        history.push('/notice');  // 페이지 이동
       })
-      .catch(error => {
-        console.error('포스트 저장 오류:', error);
+      .catch((error) => {
+        alert(JSON.stringify(error));
       });
   };
 
   return (
-    <div>
-      <div>
-        <input type="text" placeholder="제목" onChange={(e) => setNewPost({ ...newPost, title: e.target.value })} />
-        <input type="text" placeholder="내용" onChange={(e) => setNewPost({ ...newPost, content: e.target.value })} />
-        <input type="text" placeholder="작성자" onChange={(e) => setNewPost({ ...newPost, writer: e.target.value })} />
-        <button onClick={handleSave}>
-          저장
-        </button>
-      </div>
-    </div>
+    <>
+      {/* 게시글 작성 폼 */}
+      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input type="text" id="writer" value={writer} onChange={(e) => setWriter(e.target.value)} />
+      <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} />
+      
+      <button onClick={save}>Save</button>
+      <button onClick={() => history.push('/notice')}>Cancel</button>
+    </>
   );
 };
-
 
 export default NoticeCreate; 
