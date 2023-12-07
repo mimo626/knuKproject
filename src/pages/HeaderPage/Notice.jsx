@@ -80,7 +80,9 @@ const Notice = () => {
       <ul>
         {posts.map(post => (
           <li key={post.id}>
-            <p>Title: {post.title},
+            <p>
+            번호 : {post.id},
+            Title: {post.title},
             Content: {post.content},
             Writer: {post.writer},
             date : {post.createdDate}</p> {/*수정 날짜도 있음 원하는거 선택하면 됨 수정되면 그 날짜와 시간을 기준으로 업데이트함(modifiedDate)*/}
