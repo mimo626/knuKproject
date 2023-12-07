@@ -2,7 +2,8 @@ import Header from "../../components/Header";
 import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'; // react-router-dom에서 useHistory 가져오기
+import { useHistory, Link } from 'react-router-dom'; // useHistory와 Link 가져오기
+
 
 
 const Page = styled.div`
@@ -70,7 +71,6 @@ const Notice = () => {
   const handleCreatePost = () => {
     // 새 게시물을 작성하는 페이지로 이동하는 로직 추가 해야됨
     // 네비게이션에는 react-router-dom과 같은 라우팅 라이브러리를 사용할 수 있습니다.
-   
 };
 
   return (

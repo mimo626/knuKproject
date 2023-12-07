@@ -10,6 +10,7 @@ import FieldMajor from './pages/FieldPage/FieldMajor';
 import FieldType from './pages/FieldPage/FieldType';
 import FieldRead from './pages/FieldPage/FieldRead';
 import FieldKeyword from './pages/FieldPage/FieldKeyword';
+import NoticeCreate from './pages/HeaderPage/NoticeCreate';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path='/main' element={<Main/>}></Route>
       <Route path='/intro' element={<Intro/>}></Route>
       <Route path='/notice' element={<Notice/>}></Route>
+      <Route path='/noticecreate' element={<NoticeCreate/>}></Route>
       <Route path='/my' element={<My/>}></Route>
       <Route path='/knuLogin' element={<KnuLogin/>}></Route>
       <Route path="/field/type/:type/page/:page?" element={<FieldType/>}></Route>
