@@ -51,7 +51,7 @@ const ProgramWrapper = styled.div`
 const ProgramContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 21.25rem;
+  width: 20rem;
   height: 35.0625rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
@@ -70,13 +70,12 @@ const ProgramImgWrapper = styled.div`
 `;
 
 const ProgramImg = styled.img`
-  width: 19.5rem;
+  width: 17rem;
   height: 23.1875rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
-  background: #B4B4B4;
   margin: 0 auto;
-  margin-top: 0.8rem;
+  margin-top: 1.5rem;
 `;
 const ProgramLCWrapper = styled.div`
   display: flex;
@@ -206,13 +205,13 @@ const Main = () => {
                             ) : (
                                 // 이미지가 없는 경우 로고 표시
                                 <ProgramImgWrapper>
-                                    <ProgramImg src={require('../components/knuLogo.png')} alt={`로고 ${index + 1}`} />
+                                    <ProgramImg style={{ paddingLeft: 7, paddingRight: 7}}src={require('../components/knuLogoB.png')} alt={`로고 ${index + 1}`} />
                                 </ProgramImgWrapper>
                             )}
                             <ProgramLCWrapper>
                                 <ProgramLikeWrapper>
                                     <IoIosHeart
-                                        style={{ paddingLeft: 12, paddingTop: 1.3, cursor: 'pointer' }} size={35}
+                                        style={{ paddingLeft: 20, paddingTop: 1.3, cursor: 'pointer' }} size={35}
                                         onClick={async () => {await handleHeartClick(item.dbid);}}
                                     />
                                     <LikeCount>{item.likeCount}</LikeCount>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { json, Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../../components/Header";
@@ -101,6 +101,18 @@ const T= styled.table`
 
 `;
 
+const handleHeartClick = async (noticeId) => {
+  try {
+    await axios.post('/like/click', {
+      noticeId: noticeId,
+    });
+    location.reload();
+  } catch (error) {
+    alert(error.response.data);
+    console.error('에러가 발생했습니다:', error);
+  }
+};
+
 function FieldType() {
   const [data, setData] = useState([]);
   const { type } = useParams();
@@ -116,9 +128,12 @@ function FieldType() {
           page: page,
           perPage: 6,
         });
+        const processedData = response.data.data.map(item => ({
+          ...item,
+          images: item.img.split(';'),
+        }));
 
-        setData(response.data.data);
-      } catch (error) {
+        setData(processedData);      } catch (error) {
         console.error('에러가 발생했습니다:', error);
       }
     };
@@ -132,27 +147,35 @@ function FieldType() {
       {data.length > 0 && <MajorTitle>{data[0].major}</MajorTitle>}
       <Line />
       <div>
-        {/* 데이터를 사용하여 테이블 및 페이지 버튼 렌더링 */}
         <ContentWrapper>
-        {data.map(item => (
-          <Link to={'/field/read/' + item.dbid} style={{textDecoration: "none" }} key={item.dbid}><Content>
-            <ImgWrapper src={item.img}></ImgWrapper>
+          {data.map((item, index) => (
+              <Link to={'/field/read/' + item.dbid} style={{ textDecoration: "none" }} key={item.dbid}>
+                <Content>
+                  {item.img && item.img !== '' ? (
+                      <ImgWrapper src={item.images[0]} alt={`포스터`}></ImgWrapper>
+                  ) : (
+                      // 이미지가 없는 경우 로고 표시
+                      <ImgWrapper src={require('../../components/knuLogo.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
+                  )}
             <TableWrapper>
               <Title style={{color:'black'}}>{item.title}</Title>
               <T>작성자: {item.writer}</T>
                 <Wrapper>
-                  <IoIosHeart style={{color:'#FE4D82', paddingRight:3}} size={35}></IoIosHeart>
+                  <IoIosHeart
+                      style={{color:'#FE4D82', paddingRight:3, cursor: 'pointer' }} size={35}
+                      onClick={async () => {await handleHeartClick(item.dbid);}}/>
                   <T style={{ paddingTop:2, color:'#FE4D82'}}>{item.likeCount}</T>
                   <IoEye style={{ color: '#006CBF', paddingRight:3}} size={35}></IoEye>
                   <T style={{ paddingTop:3, color: '#006CBF'}}>{item.view}</T>
                 </Wrapper>
                 <T>{item.regdate}</T>
             </TableWrapper>
-          </Content></Link>
+          </Content>
+              </Link>
           ))}
         </ContentWrapper>
       </div>
-    </Page>    
+    </Page>
   );
 }
 

@@ -3,6 +3,7 @@ import LoginBtn from "../components/LoginBtn";
 import { Link } from "react-router-dom";
 import SearchBtn from "../components/SearchBtn";
 import SearchClick from "../components/SearchClick";
+import knuLogo from '../components/knuLogo.png';
 import { useState } from "react";
 
 const Container = styled.div`
@@ -139,7 +140,7 @@ function Header() {
         <Container>
             <Content>
                 <StyledLink to={'/main'}>
-                    <img style={imageStyle} src="img/knuLogo.png" alt="강남대 로고" />
+                    <img style={imageStyle} src={knuLogo} alt="강남대 로고" />
                 </StyledLink>
                 {/* 라우팅 충돌, 드롭다운 기능 */}
                 <HeaderWrapper>
