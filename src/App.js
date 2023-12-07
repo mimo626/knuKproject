@@ -27,6 +27,7 @@ function App() {
       <Route path="/field/major/:major/page/:page?" element={<FieldMajor/>}></Route>
       <Route path="/field/keyword/:keyword/page/:page?" element={<FieldKeyword/>}></Route>
       <Route path="/field/read/:noticeId?" element={<FieldRead/>}></Route>
+      <Route path='/noticeCreate' element={<NoticeCreate/>}></Route>
     </Routes>
   );
 }
