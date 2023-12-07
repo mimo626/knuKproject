@@ -276,7 +276,7 @@ function My() {
                 <MyContent>
                     <MyTitleWrapper>Profile</MyTitleWrapper>
                     <MyInfromWrapper>
-                        <MyEmail>닉네임: {userEmail.split('@')[0]}</MyEmail>
+                        <MyEmail>닉네임: {typeof userEmail === 'string' ? userEmail.split('@')[0] : ''}</MyEmail>
                         <EmailBtnContainer>
                             <Link to={'/knuLogin'} style={{textDecoration: "none"}}><EmailBtn>강남대
                                 이메일인증</EmailBtn></Link>
