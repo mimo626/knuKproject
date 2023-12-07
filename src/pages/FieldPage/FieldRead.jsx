@@ -117,7 +117,7 @@ function FieldRead() {
                     dbid: noticeId
                 });
                 setData(responseBody.data);
-                setPost(responseBody.data.html)
+                setPost(responseBody.data.html.replaceAll('src="', 'style="width:45%" src="https://web.kangnam.ac.kr'))
             } catch (error) {
                 console.error('에러가 발생했습니다:', error);
             }
@@ -157,7 +157,7 @@ function FieldRead() {
                     </ProgramLCWrapper>
             </TitleWrapper>
                 <div> 
-            {Parser(JSON.stringify(post))}
+            {Parser(post)}
                 {data.comments && data.comments.map(item => (
                     <table key={item.id}>
                         <tbody>
