@@ -44,7 +44,7 @@ const ContentWrapper = styled.div`
   padding-bottom:5rem;
 `;
 
-const Content= styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: row;
   width: 33rem;
@@ -58,7 +58,7 @@ const Content= styled.div`
 
 `;
 
-const ImgWrapper= styled.img`
+const ImgWrapper = styled.img`
   width: 45%;
   flex-shrink: 0;
   border-radius: 0.625rem;
@@ -66,7 +66,7 @@ const ImgWrapper= styled.img`
   gap: 0.5rem;
   margin: 0.5rem 0.5rem;
 `;
-const TableWrapper= styled.div`
+const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 55%;
@@ -74,7 +74,7 @@ const TableWrapper= styled.div`
   margin: 0 auto;
   word-break:keep-all;  
 `;
-const Title= styled.table`
+const Title = styled.table`
   height: 4rem;
   font-size: 1.3rem;
   font-weight: 600;
@@ -84,13 +84,13 @@ const Title= styled.table`
 
 
 `;
-const Wrapper= styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top:0.5rem;
   margin-bottom:0.5rem;
 `;
-const T= styled.table`
+const T = styled.table`
   font-size: 1.1rem;
   font-weight: 500;
   word-break:break-word;
@@ -132,7 +132,8 @@ function FieldMajor() {
           images: item.img.split(';'),
         }));
 
-        setData(processedData);      } catch (error) {
+        setData(processedData);
+      } catch (error) {
         console.error('에러가 발생했습니다:', error);
       }
     };
@@ -141,40 +142,40 @@ function FieldMajor() {
   }, []);
 
   return (
-      <Page>
-        <Header />
-        {data.length > 0 && <MajorTitle>{data[0].major}</MajorTitle>}
-        <Line />
-        <div>
-          <ContentWrapper>
-                    {data.map((item, index) => (
-                        <Link to={'/field/read/' + item.dbid} style={{ textDecoration: "none" }} key={item.dbid}>
-                        <Content>
-                            {item.img && item.img !== '' ? (
-                                <ImgWrapper src={item.images[0]} alt={`포스터`}></ImgWrapper>
-                          ) : (
-                              // 이미지가 없는 경우 로고 표시
-                                <ImgWrapper src={require('../../components/knuLogoB.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
-                          )}
-                    <TableWrapper>
-                      <Title style={{ color: 'black' }}>{item.title}</Title>
-                      <T>작성자: {item.writer}</T>
-                      <Wrapper>
-                        <IoIosHeart
-                            style={{color:'#FE4D82', paddingRight:3, cursor: 'pointer' }} size={35}
-                            onClick={async () => {await handleHeartClick(item.dbid);}}/>
-                        <T style={{ paddingTop:2, color:'#FE4D82'}}>{item.likeCount}</T>
-                        <IoEye style={{ color: '#006CBF', paddingRight: 3 }} size={35}></IoEye>
-                        <T style={{ paddingTop: 3, color: '#006CBF' }}>{item.view}</T>
-                      </Wrapper>
-                      <T>{item.regdate}</T>
-                    </TableWrapper>
-                  </Content>
-                        </Link>
-                    ))}
-          </ContentWrapper>
-        </div>
-      </Page>
+    <Page>
+      <Header />
+      {data.length > 0 && <MajorTitle>{data[0].major}</MajorTitle>}
+      <Line />
+      <div>
+        <ContentWrapper>
+          {data.map((item, index) => (
+            <Link to={'/field/read/' + item.dbid} style={{ textDecoration: "none" }} key={item.dbid}>
+              <Content>
+                {item.img && item.img !== '' ? (
+                  <ImgWrapper src={item.images[0]} alt={`포스터`}></ImgWrapper>
+                ) : (
+                  // 이미지가 없는 경우 로고 표시
+                  <ImgWrapper src={require('../../components/knuLogoB.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
+                )}
+                <TableWrapper>
+                  <Title style={{ color: 'black' }}>{item.title}</Title>
+                  <T>작성자: {item.writer}</T>
+                  <Wrapper>
+                    <IoIosHeart
+                      style={{ color: '#FE4D82', paddingRight: 3, cursor: 'pointer' }} size={35}
+                      onClick={async () => { await handleHeartClick(item.dbid); }} />
+                    <T style={{ paddingTop: 2, color: '#FE4D82' }}>{item.likeCount}</T>
+                    <IoEye style={{ color: '#006CBF', paddingRight: 3 }} size={35}></IoEye>
+                    <T style={{ paddingTop: 3, color: '#006CBF' }}>{item.view}</T>
+                  </Wrapper>
+                  <T>{item.regdate}</T>
+                </TableWrapper>
+              </Content>
+            </Link>
+          ))}
+        </ContentWrapper>
+      </div>
+    </Page>
   );
 
 }
