@@ -3,7 +3,7 @@ import styled from "styled-components";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom'; // useHistory와 Link 가져오기
-
+import { useNavigate } from "react-router-dom";
 
 
 const Page = styled.div`
@@ -53,6 +53,7 @@ const CreatePostButton = styled.button`
 
 const Notice = () => {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // API 호출을 통해 게시물 목록을 가져오는 함수
@@ -69,6 +70,7 @@ const Notice = () => {
   }, []); // useEffect를 통해 컴포넌트가 처음 마운트될 때만 실행
 
   const handleCreatePost = () => {
+    navigate('/notice/create')
     // 새 게시물을 작성하는 페이지로 이동하는 로직 추가 해야됨
     // 네비게이션에는 react-router-dom과 같은 라우팅 라이브러리를 사용할 수 있습니다.
 };
@@ -80,13 +82,13 @@ const Notice = () => {
       <ul>
         {posts.map(post => (
           <li key={post.id}>
-            <p>
+            <Link to={'/notice/read/' + post.id} style={{ textDecoration: "none" }} key={post.id}><p>
             번호 : {post.id},
             Title: {post.title},
             Content: {post.content},
             Writer: {post.writer},
-            date : {post.createdDate}</p> {/*수정 날짜도 있음 원하는거 선택하면 됨 수정되면 그 날짜와 시간을 기준으로 업데이트함(modifiedDate)*/}
-
+            date : {post.createdDate}</p></Link>
+            {/*수정 날짜도 있음 원하는거 선택하면 됨 수정되면 그 날짜와 시간을 기준으로 업데이트함(modifiedDate)*/}
             {/* 추가적으로 필요한 정보 표시 */}
           </li>
         ))}
