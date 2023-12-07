@@ -28,6 +28,7 @@ function App() {
       <Route path="/field/major/:major/page/:page?" element={<FieldMajor/>}></Route>
       <Route path="/field/keyword/:keyword/page/:page?" element={<FieldKeyword/>}></Route>
       <Route path="/field/read/:noticeId?" element={<FieldRead/>}></Route>
+      <Route path='/noticeCreate' element={<NoticeCreate/>}></Route>
       <Route path="/notice/read/:noticeId?" element={<NoticeRead/>}></Route>
       <Route path="/notice/create" element={<NoticeCreate/>}></Route>
       {/* useHistory 수정 필요 - <Route path="/notice/modify" element={<NoticeModify/>}></Route>*/}

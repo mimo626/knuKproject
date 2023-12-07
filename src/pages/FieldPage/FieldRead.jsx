@@ -84,25 +84,41 @@ const LikeCount = styled.div`
     padding-top: 0.3rem;
     padding-right: 2rem;
 `;
+const CommentWrapper = styled.div`
+    display: flex;
+    flex-direction: row;   
+    width: 75%;
+    padding-top:2rem; 
+    align-items:center;
+    margin:0 auto;
+`;
 const Btn = styled.div`
 display: flex;
 width: 5rem;
 height: 2rem;
 padding: 0.1rem 0.5rem;
-flex-direction: column;
 justify-content: center;
-align-items: center;
+align-items:center;
 gap: 0.5rem;
 flex-shrink: 0;
 border-radius: 0.5rem;
 background: #fff;
 color: #006CBF;
+margin: 0 auto;
 border: 1px solid #006CBF;
 &: hover{
     background: #006CBF;
     color: #fff;
-    
 }
+`;
+const TextArea = styled.textarea`
+display: flex;
+width: 45rem;
+height: 5rem;
+`;
+const Table = styled.table`
+width: 75%;
+margin: 0 auto;
 `;
 function FieldRead() {
     const [data, setData] = useState([]);
@@ -156,15 +172,16 @@ function FieldRead() {
                         <T style={{ paddingTop:3, color: '#006CBF'}}>222</T>        
                     </ProgramLCWrapper>
             </TitleWrapper>
-                <div> 
+            <div> 
             {Parser(post)}
+            <Line2 style={{marginBottom: 40}}/>
                 {data.comments && data.comments.map(item => (
-                    <table key={item.id}>
+                    <Table key={item.id}>
                         <tbody>
                             <tr>
-                                <td>{item.email}</td>
-                                <td>{item.comment}</td>
-                                {data.modify ? <td>{item.createdDate}</td>: <td>{item.modifiedDate}</td>}
+                                <td style={{paddingRight: 200}}>{item.comment}</td>
+                                <td style={{color:'gray'}}>작성자: {item.email}</td>
+                                {data.modify ? <td style={{color:'gray'}}>{item.createdDate}</td>: <td style={{color:'gray'}}>{item.modifiedDate}</td>}
                                 <td><TiDelete style={{color:'#F87B7B'}} size={35} onClick={async () => {
                                     try {
                                         await axios.post('/comments/delete', {
@@ -191,26 +208,27 @@ function FieldRead() {
                                 }} >댓글 수정</RiPencilFill></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </Table>
                 ))}
-                <textarea placeholder="댓글을 입력하세요" id="comments" cols="50" rows="5"></textarea>
-                    <Btn onClick={async () => {
-                        try {
-                            await axios.post('/comments/save', {
-                                noticeId: data.dbid,
-                                comment: document.getElementById("comments").value,
-                                noticeTitle: data.title
-                            });
-                            location.reload();
-                        } catch (error) {
-                            alert(error.response.data)
-                            console.error('에러가 발생했습니다:', error);
-                            }
-                        }} >댓글 작성</Btn>
+                <CommentWrapper>
+                    <TextArea placeholder="댓글을 입력하세요" id="comments" ></TextArea>
+                        <Btn onClick={async () => {
+                            try {
+                                await axios.post('/comments/save', {
+                                    noticeId: data.dbid,
+                                    comment: document.getElementById("comments").value,
+                                    noticeTitle: data.title
+                                });
+                                location.reload();
+                            } catch (error) {
+                                alert(error.response.data)
+                                console.error('에러가 발생했습니다:', error);
+                                }
+                            }} >댓글 작성</Btn>
+                </CommentWrapper>
                 <br />
             </div>
             </Content>
-            
         </Page>
         
     );
