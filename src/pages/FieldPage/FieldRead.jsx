@@ -105,7 +105,8 @@ border-radius: 0.5rem;
 background: #fff;
 color: #006CBF;
 margin: 0 auto;
-border: 1px solid #006CBF;
+  cursor: pointer;
+  border: 1px solid #006CBF;
 &: hover{
     background: #006CBF;
     color: #fff;
@@ -147,9 +148,9 @@ function FieldRead() {
             <Line/>
             <Content>
                 <TitleWrapper>
-                    <Title>[대플] 컴퓨터활용능력 2급 자격증 취득 교육과정 모집</Title>
-                    <T style={{ textAlign: 'right'}}>등록날짜: 2023.12.06 14:49</T>
-                        <T style={{ textAlign: 'right'}}>작성자: 강민주</T>
+                    <Title>{data.title}</Title>
+                    <T style={{ textAlign: 'right' }}>등록날짜: {data.regdate}</T>
+                    <T style={{ textAlign: 'right' }}>작성자: {data.writer}</T>
                     <Line2/>
                     <ProgramLCWrapper>
                         <ProgramLikeWrapper>
@@ -163,18 +164,32 @@ function FieldRead() {
                                     alert(error.response.data)
                                     console.error('에러가 발생했습니다:', error);
                                 }
-                            }}>{data.checkLike ? <IoIosHeart style={{color:'#FE4D82'}} size={35}/> 
-                            : <IoIosHeartEmpty  style={{color:'#FE4D82'}} size={35}/>}
+                            }}>{data.checkLike ?
+                                <IoIosHeart style={{ color: '#FE4D82', cursor: 'pointer' }} size={35}></IoIosHeart>
+                                : <IoIosHeartEmpty  style={{color:'#FE4D82'}} size={35}/>}
                             </button>
-                            <LikeCount>11</LikeCount>
+                            <LikeCount>{data.likeCount}</LikeCount>
                         </ProgramLikeWrapper>
                         <IoEye style={{ color: '#006CBF', paddingRight:3}} size={35}></IoEye>
-                        <T style={{ paddingTop:3, color: '#006CBF'}}>222</T>        
+                        <T style={{ paddingTop:3, color: '#006CBF'}}>{data.view}</T>
                     </ProgramLCWrapper>
             </TitleWrapper>
-            <div> 
-            {Parser(post)}
-            <Line2 style={{marginBottom: 40}}/>
+            <div>
+                {typeof data.html === 'string' ? (
+                    Parser(data.html)
+                ) : (
+                    <p>유효하지 않은 HTML 내용입니다.</p>
+                )}
+
+                {data.img && data.img.split(';').map((imgSrc, index) => (
+                    <img
+                        key={index}
+                        src={imgSrc}
+                        alt={`이미지 ${index + 1}`}
+                        style={{ width: '100%', height: 'auto' }}
+                    />
+                ))}
+                <Line2 style={{marginBottom: 40}}/>
                 {data.comments && data.comments.map(item => (
                     <Table key={item.id}>
                         <tbody>
