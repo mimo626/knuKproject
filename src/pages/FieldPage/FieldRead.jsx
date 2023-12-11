@@ -134,7 +134,7 @@ function FieldRead() {
                     dbid: noticeId
                 });
                 setData(responseBody.data);
-                setPost(responseBody.data.html.replaceAll('src="', 'style="width:45%" src="https://web.kangnam.ac.kr'))
+                setPost(responseBody.data.html.replaceAll('src="/comm', 'style="width:60%" src="https://web.kangnam.ac.kr/comm'));
             } catch (error) {
                 console.error('에러가 발생했습니다:', error);
             }
@@ -175,14 +175,7 @@ function FieldRead() {
                     </ProgramLCWrapper>
             </TitleWrapper>
                 <div>
-                {Parser(post)}
-                    {data.img && data.img.split(';').map((imgSrc, index) => (
-                        <img
-                            key={index}
-                            src={imgSrc}
-                            style={{ width: '60%', height: 'auto', display: 'block', margin: '0 auto' }}
-                        />
-                    ))}
+                    {Parser(post)}
                     <Line2 style={{marginBottom: 40}}z/>
                 {data.comments && data.comments.map(item => (
                     <Table key={item.id}>
@@ -239,7 +232,6 @@ function FieldRead() {
             </div>
             </Content>
         </Page>
-        
     );
 }
 export default FieldRead; 
