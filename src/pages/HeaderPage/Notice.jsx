@@ -58,7 +58,7 @@ const CreatePostButton = styled.button`
     width: 10rem;
     height: 3rem;
     padding: 0.5rem 1rem;
-    background-color: #007bff;
+    background-color: #006CBF;
     color: white;
     border: none;
     border-radius: 4px;

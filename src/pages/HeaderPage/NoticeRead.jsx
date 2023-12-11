@@ -105,8 +105,8 @@ function NoticeRead() {
                         <Th style={{width:'20%'}}>{data.createdDate}</Th>
                         </Tr>
                     </tbody>
-                    <p>{data.content}</p>
                 </NoticeTable>
+                <p style={{padding: 20}}>{data.content}</p>
                 <ButtonWrapper>
                     <Button onClick={() => {
                         navigate('/notice/modify/' + data.id)
