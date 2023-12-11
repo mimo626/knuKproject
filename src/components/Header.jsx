@@ -96,7 +96,6 @@ const SideWrapperList = styled.li`
     justify-content: center;
     align-items: center;
     color: black;
-
     text-align: center;
     font-family: Inter;
     font-size: 1rem;

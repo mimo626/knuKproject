@@ -68,7 +68,31 @@ const CreatePostButton = styled.button`
     bottom:2rem;
     right: 2rem;
 `;
+const NoticeTable = styled.table`
+  width:100%;
+  text-align: center;
+  padding: 0;
+  margin-top: 2rem;
+  border-bottom: 1px solid black; 
+  border-collapse: collapse
 
+`;
+const Tr = styled.tr`
+border-bottom: 1px solid black; 
+background: #FCFCFC;
+
+`;
+const Th = styled.th`
+border-bottom: 1px solid black; 
+padding: 1rem 0.5rem;
+border-collapse: collapse
+background: #F3F7FF;
+
+`;
+const Td = styled.td`
+padding: 1rem 0.5rem;
+border-bottom: 1px solid #E7E7E7; 
+`;
 const Notice = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
@@ -103,24 +127,25 @@ const Notice = () => {
           <Title>게시글 목록</Title>
           <Link to={'/noticeCreate'} style={{ textDecoration: "none"}}><CreatePostButton onClick={handleCreatePost}>게시글 작성</CreatePostButton></Link>
         </TitleWrapper>
-        <Line2/>
-        <div>
-          <ul>
+        <NoticeTable>
+          <tbody>
+            <Tr>
+              <Th style={{width:'5%'}}>번호</Th>
+              <Th style={{width:'55%'}}>제목</Th>
+              <Th style={{width:'20%'}}>작성자</Th>
+              <Th style={{width:'20%'}}>작성일</Th>
+            </Tr>
             {posts.map(post => (
-              <li key={post.id}>
-                <Link to={'/notice/read/' + post.id} style={{ textDecoration: "none" }} key={post.id}></Link>
-                <p>
-                번호 : {post.id},
-                Title: {post.title},
-                Content: {post.content},
-                Writer: {post.writer},
-                date : {post.createdDate}</p> {/*수정 날짜도 있음 원하는거 선택하면 됨 수정되면 그 날짜와 시간을 기준으로 업데이트함(modifiedDate)*/}
-
-                {/* 추가적으로 필요한 정보 표시 */}
-              </li>
+                <Tr key={post.id}>
+                  <Td style={{color:'gray'}}>{post.id}</Td>
+                  <Td style={{textAlign:'left', paddingLeft:20, color:'black'}}><Link to={'/notice/read/' + post.id} style={{ textDecoration: "none" , width:'55%'}}>{post.title}</Link></Td>
+                  <Td style={{color:'gray'}}>{post.writer}</Td>
+                  <Td style={{color:'gray'}}>{post.createdDate}</Td>
+                  {/* 추가적으로 필요한 정보 표시 */}
+                </Tr>
             ))}
-          </ul>
-        </div>
+          </tbody>
+        </NoticeTable>
       </Content>
     </Page>
   );
