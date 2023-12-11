@@ -82,7 +82,6 @@ function NoticeRead() {
             try {
                 const responseBody = await axios.get('/api/v1/posts/' + noticeId, {
                 });
-                console.log(responseBody.data);
                 setData(responseBody.data);
             } catch (error) {
                 console.error('에러가 발생했습니다:', error);
@@ -110,20 +109,19 @@ function NoticeRead() {
                 </NoticeTable>
                 <ButtonWrapper>
                     <Button onClick={() => {
-                        //navigate('/notice/modify')
+                        navigate('/notice/modify/' + data.id)
                     }}>수정</Button>
-
-                    <Button onClick={async () => {
-                        try {
-                            await axios.delete('/api/v1/posts/' + data.id, {
-                            });
-                            navigate(-1);
-                        } catch (error) {
-                            alert(error.response.data)
-                            console.error('에러가 발생했습니다:', error);
-                        }
-                    }
-                    }>삭제</Button>
+                            <Button onClick={async () => {
+                                try {
+                                    await axios.delete('/api/v1/posts/' + data.id, {
+                                    });
+                                    navigate(-1);
+                                } catch (error) {
+                                    alert(error.response.data)
+                                    console.error('에러가 발생했습니다:', error);
+                                }
+                            }
+                            }>삭제</Button>
                 </ButtonWrapper>
             </Content>
         </Page>

@@ -1,94 +1,70 @@
+import axios, { AxiosError } from "axios";
+import { createContext, useEffect, useState } from "react";
+import { json, Link, redirect, useParams } from "react-router-dom";
+import Parser from 'html-react-parser';
 import Header from "../../components/Header";
 import styled from "styled-components";
-import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { IoIosHeart } from "react-icons/io";
+import { IoEye } from "react-icons/io5";
+import { IoIosHeartEmpty } from "react-icons/io";
+import { TiDelete } from "react-icons/ti";
+import { RiPencilFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
-const Page = styled.div`
-    width:100%;
-    margin-top: 8rem;
-
-`;
-const Content = styled.div`
-    width:75.5rem;
-    display: flex;
-    flex-direction: column;
-    margin:0 auto;
+const TextArea = styled.textarea`
+display: flex;
+width: 45rem;
+height: 5rem;
 `;
 
-const NoticeText = styled.div`
-    width: 15rem;
-    text-align: center;
-    font-family: Inter;
-    font-size: 3rem;
-    font-style: normal;
-    font-weight: 600;
-`;
+function NoticeModify() {
+    const [data, setData] = useState([]);
+    const { noticeId } = useParams();
+    const navigate = useNavigate();
 
-const NoticeLine = styled.div`
-    width: 75rem;
-    height: 0.15rem;
-    background-color: black;
-    flex-shrink: 0;
-    margin-top:2rem;
-    margin-bottom:2rem;
-`;
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responseBody = await axios.get('/api/v1/posts/' + noticeId, {
+                });
+                setData(responseBody.data);
+            } catch (error) {
+                console.error('에러가 발생했습니다:', error);
+            }
+        };
+        fetchData();
+    }, []);
 
+    return (
+        <div>
+            <h3>수정 페이지 입니다.</h3>
+            <p>{data.id}</p>
+            <p>{data.title}</p>
+            <p>{data.content}</p>
+            <p>{data.createdDate}</p>
+            <p>{data.modifiedDate}</p>
+            <p>{data.writer}</p>
 
+            <TextArea placeholder="수정할 게시물 제목을 입력하세요" id="title" ></TextArea>
+            <TextArea placeholder="수정할 내용을 입력하세요" id="content" ></TextArea>
 
+            <button onClick={async () => {
+                    try {
+                        await axios.put('/api/v1/posts/' + data.id, {
+                            title: document.getElementById("title").value,
+                            content: document.getElementById("content").value,
+                            id: data.id
+                        });
+                        console.log("test")
+                        navigate(-1);
+                    } catch (error) {
+                        alert(error.response.data)
+                        console.error('에러가 발생했습니다:', error);
+                    }
+                }
+            }>수정</button>
 
-
-const VieNoticeModifywPostPage = () => {
-  const { postId } = useParams();
-  const history = useHistory();
-
-  const [post, setPost] = useState({});
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-
-  useEffect(() => {
-    // postId를 사용하여 해당 게시글 정보를 가져오는 로직
-    axios.get(`/api/v1/posts/${postId}`)
-      .then((response) => {
-        const postData = response.data;
-        setPost(postData);
-        setTitle(postData.title);
-        setContent(postData.content);
-      })
-      .catch((error) => {
-        console.error(error);
-        // 에러 처리 로직 추가
-      });
-  }, [postId]);
-
-  const update = () => {
-    const data = { title, content };
-
-    axios.put(`/api/v1/posts/${postId}`, data)
-      .then(() => {
-        alert('글이 수정되었습니다.');
-        history.push('/notice');  // 페이지 이동
-      })
-      .catch((error) => {
-        alert(JSON.stringify(error));
-      });
-  };
-
-  return (
-    <>
-      {/* 게시글 내용 및 수정 버튼 등을 표시하는 내용 */}
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-
-      <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-      <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} />
-
-      <button onClick={update}>Update</button>
-      <button onClick={() => history.push('/notice')}>Back</button>
-    </>
-  );
-};
-
-
-
+        </div>
+    );
+}
 export default NoticeModify; 

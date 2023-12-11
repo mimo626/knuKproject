@@ -116,12 +116,18 @@ function FieldKeyword() {
           page: page,
           perPage: 6,
         });
-        setData(response.data.data);
+
+        const processedData = response.data.data.map(item => ({
+          ...item,
+          images: item.img.split(';'),
+        }));
+
+        setData(processedData);
       } catch (error) {
         console.error('에러가 발생했습니다:', error);
       }
     };
-    
+    console.log(data)
     fetchData();
   }, []);
 
@@ -133,9 +139,14 @@ function FieldKeyword() {
       <div>
         {/* 데이터를 사용하여 테이블 및 페이지 버튼 렌더링 */}
         <ContentWrapper>
-        {data.map(item => (
+        {data.map((item, index) => (
           <Link to={'/field/read/' + item.dbid} style={{textDecoration: "none" }} key={item.dbid}><Content>
-            <ImgWrapper src={item.img}></ImgWrapper>
+            {item.img && item.img !== '' ? (
+                  <ImgWrapper src={item.images[0]} alt={`포스터`}></ImgWrapper>
+                ) : (
+                  // 이미지가 없는 경우 로고 표시
+                  <ImgWrapper src={require('../../components/knuLogoB.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
+                )}
             <TableWrapper>
               <Title style={{color:'black'}}>{item.title}</Title>
               <T>작성자: {item.writer}</T>

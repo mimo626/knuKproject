@@ -44,7 +44,7 @@ const ContentWrapper = styled.div`
   padding-bottom:5rem;
 `;
 
-const Content= styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: row;
   width: 33rem;
@@ -58,7 +58,7 @@ const Content= styled.div`
 
 `;
 
-const ImgWrapper= styled.img`
+const ImgWrapper = styled.img`
   width: 45%;
   flex-shrink: 0;
   border-radius: 0.625rem;
@@ -66,7 +66,7 @@ const ImgWrapper= styled.img`
   gap: 0.5rem;
   margin: 0.5rem 0.5rem;
 `;
-const TableWrapper= styled.div`
+const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 55%;
@@ -74,7 +74,7 @@ const TableWrapper= styled.div`
   margin: 0 auto;
   word-break:keep-all;  
 `;
-const Title= styled.table`
+const Title = styled.table`
   height: 4rem;
   font-size: 1.3rem;
   font-weight: 600;
@@ -84,13 +84,13 @@ const Title= styled.table`
 
 
 `;
-const Wrapper= styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top:0.5rem;
   margin-bottom:0.5rem;
 `;
-const T= styled.table`
+const T = styled.table`
   font-size: 1.1rem;
   font-weight: 500;
   word-break:break-word;
@@ -132,7 +132,8 @@ function FieldMajor() {
           images: item.img.split(';'),
         }));
 
-        setData(processedData);      } catch (error) {
+        setData(processedData);
+      } catch (error) {
         console.error('에러가 발생했습니다:', error);
       }
     };
