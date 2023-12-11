@@ -174,22 +174,15 @@ function FieldRead() {
                         <T style={{ paddingTop:3, color: '#006CBF'}}>{data.view}</T>
                     </ProgramLCWrapper>
             </TitleWrapper>
-            <div>
-                {typeof data.html === 'string' ? (
-                    Parser(data.html)
-                ) : (
-                    <p>유효하지 않은 HTML 내용입니다.</p>
-                )}
-
-                {data.img && data.img.split(';').map((imgSrc, index) => (
-                    <img
-                        key={index}
-                        src={imgSrc}
-                        alt={`이미지 ${index + 1}`}
-                        style={{ width: '100%', height: 'auto' }}
-                    />
-                ))}
-                <Line2 style={{marginBottom: 40}}/>
+                <div>
+                    {data.img && data.img.split(';').map((imgSrc, index) => (
+                        <img
+                            key={index}
+                            src={imgSrc}
+                            style={{ width: '60%', height: 'auto', display: 'block', margin: '0 auto' }}
+                        />
+                    ))}
+                    <Line2 style={{marginBottom: 40}}z/>
                 {data.comments && data.comments.map(item => (
                     <Table key={item.id}>
                         <tbody>

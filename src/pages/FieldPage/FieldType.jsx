@@ -149,15 +149,14 @@ function FieldType() {
       <div>
         <ContentWrapper>
           {data.map((item, index) => (
-                <Content>
-                  {item.img && item.img !== '' ? (
-                      <ImgWrapper src={item.images[0]} alt={`포스터`}></ImgWrapper>
-                  ) : (
-                      // 이미지가 없는 경우 로고 표시
-                      <ImgWrapper src={require('../../components/knuLogo.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
-                  )}
-            <TableWrapper>
-              <Link to={'/field/read/' + item.dbid} style={{ textDecoration: "none" }} key={item.dbid}><Title style={{color:'black'}}>{item.title}</Title></Link>
+              <Content key={item.dbid}>
+                {item.img && item.img !== '' ? (
+                    <ImgWrapper src={item.images[0]} alt={`포스터`}></ImgWrapper>
+                ) : (
+                    <ImgWrapper src={require('../../components/knuLogoB.png')} alt={`로고 ${index + 1}`}></ImgWrapper>
+                )}
+                <TableWrapper>
+              <Link to={'/field/read/' + item.dbid} style={{ textDecoration: "none", color: 'inherit' }} key={item.dbid}><Title style={{color:'black'}}>{item.title}</Title></Link>
               <T>작성자: {item.writer}</T>
                 <Wrapper>
                   <IoIosHeart
