@@ -175,6 +175,7 @@ function FieldRead() {
                     </ProgramLCWrapper>
             </TitleWrapper>
                 <div>
+                {Parser(post)}
                     {data.img && data.img.split(';').map((imgSrc, index) => (
                         <img
                             key={index}
